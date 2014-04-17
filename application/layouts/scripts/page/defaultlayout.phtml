@@ -1,0 +1,21 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+<?php //$this->headLink()->prependStylesheet('/css/style.css') ?>
+<?php $this->headScript()->prependFile('/js/jquery-1.9.1.min.js'); ?>
+<?php //$this->headScript()->appendFile('/js/general.js'); ?>
+<?php echo $this->headMeta() ?>
+<?php echo $this->headTitle() ?>
+
+<?php echo $this->headLink() ?>
+<?php echo $this->headStyle() ?>
+
+<?php echo $this->headScript() ?>
+</head>
+
+<body lang="en">
+
+<?php echo $this->layout()->content; ?>
+<?php echo $this->inlineScript() ?>
+</body>
+</html>

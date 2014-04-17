@@ -4,17 +4,51 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html ng-app>
+<html ng-app="wajnertApp">
 	<head>
-		<script src="/js/angular.min.js"></script>
-		<script src="/js/bodyController.js"></script>
-		<script src="/js/application.js"></script>
-		<title>TODO supply a title</title>
+		<title>Konfigurator Wajnert</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
+		<link href="css/normalize.min.css" media="screen" rel="stylesheet" type="text/css" >
+		<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" >
+		<script src="js/data.js"></script>
+		<script src="default/index/data"></script>
+		<script src="js/jquery-1.11.0.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-route.min.js"></script>
+		<script src="js/bodyController.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
 	</head>
 	<body ng-controller="BodyController">
-		<div>TODO write content</div>
-		<h1>{{dupa}}</h1>
+		<div class="section-outer section-top">
+			<div class="section-inner section-top">
+				
+			</div>
+		</div>
+		<div class="section-outer section-middle">
+			<div class="section-inner section-middle" ng-view>
+<!--
+				<h2>Wykreuj swoje wnętrze z kolekcją MULTI+<br>Baw się, projektuj lub korzystaj z gotowych rozwiązań</h2>
+				<img alt="" src="images/img1.jpg" >
+				<ul class="menu2 clearfix">
+					<li><img alt="" src="images/kretor-komod.jpg" ></li>
+					<li><img alt="" src="images/kreator-szaf.jpg" ></li>
+					<li><img alt="" src="images/kreator-lozek.jpg" ></li>
+				</ul>
+
+				<ul class="menu2 clearfix">
+					<li><img alt="" src="images/ico-www.gif" ></li>
+					<li><img alt="" src="images/ico-pdf.gif" ></li>
+					<li><img alt="" src="images/ico-play.gif" ></li>
+				</ul>
+-->
+			</div>
+		</div>
+		<div class="section-outer section-bottom">
+			<div class="section-inner section-bottom">
+				
+			</div>
+		</div>
 	</body>
 </html>

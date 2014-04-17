@@ -1,0 +1,199 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014-04-15, 21:45:28
+    Author     : Lukasz
+*/
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+/**/
+
+body{
+	background-image: url('../images/konfigurator_1a.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+.section-outer{
+	width: 100%;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.section-outer .section-inner{
+	width: 958px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.section-top{
+	height: 70px;
+	background-image: url('../images/gradient-top.gif');
+	background-repeat: repeat-x;
+}
+
+.section-outer .section-inner.section-top{
+	background-image: url('../images/konfigurator_1a.png');
+}
+
+.section-middle{
+	height: 544px;
+	background-image: url('../images/gradient-middle.gif');
+	background-repeat: repeat-x;
+}
+
+.section-bottom{
+	height: 38px;
+	background-image: url('../images/gradient-bottom.gif');
+	background-repeat: repeat-x;
+}
+
+.section-outer .section-inner.section-bottom{
+	background-image: url('../images/konfigurator_1a.png');
+	background-position: center bottom;
+}
+
+/**/
+
+ul.menu2{
+	list-style-type: none;
+}
+
+ul.menu2 li{
+	
+}
+
+ul.menu2 li a{
+	
+}
+
+ul.menu2 li img{
+	float: left;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+
+div.step-nav{
+	height: 60px;
+}
+
+div.step-nav img.nav{
+	margin: 0px 20px;
+	cursor: pointer;
+}
+
+div.step-nav img.nav.left{
+	float: left;
+}
+
+div.step-nav img.nav.right{
+	float: right;
+}
+
+ul.color-menu{
+	list-style-type: none;
+	float: left;
+	width: 200px;
+}
+
+ul.color-menu li{
+	
+}
+
+ul.color-menu li a{
+	
+}
+
+ul.color-menu li span{
+	float: left;
+	cursor: pointer;
+	padding: 12px;
+	border: 1px solid #d8d7d7;
+	margin-right: 13px; 
+}
+
+ul.color-menu li span:hover, ul.color-menu li span.active{
+	border: 1px solid #ff9933;
+}
+
+
+ul.selected-items{
+	list-style-type: none;
+}
+
+ul.selected-items li{
+	
+}
+
+ul.selected-items li a{
+	
+}
+
+ul.selected-items li img{
+	float: left;
+	margin-right: 20px;
+	max-height: 200px;
+}
+
+
+div.items-menu-div{
+	background-color: #f1f1f1;
+	border: 1px solid #b7b7b7;
+	width: 796px;
+	height: 185px;
+}
+
+div.items-menu-div img.nav{
+	margin: 80px 10px 0 10px;
+	cursor: pointer;
+}
+
+div.items-menu-div img.nav.left{
+	float: left;
+}
+
+div.items-menu-div img.nav.right{
+	float: right;
+}
+
+ul.items-menu{
+	list-style-type: none;
+	overflow: hidden;
+	height: 100%;
+	float: left;
+	margin: 0;
+	width: 664px;
+}
+
+ul.items-menu li{
+	
+}
+
+ul.items-menu li a{
+	
+}
+
+ul.items-menu li img{
+	float: left;
+	margin: 12px;
+	max-height: 160px;
+	cursor: pointer;
+}
