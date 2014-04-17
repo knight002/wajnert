@@ -24,4 +24,14 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams) {
 //		$scope.phoneId = $routeParams.phoneId;
 		console.log('step 2 controller');
+		$scope.prevStep = 'step1';
+		$scope.nextStep = 'step3';
+	}]);
+
+wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
+	function($scope, $routeParams) {
+//		$scope.phoneId = $routeParams.phoneId;
+		console.log('step 3 controller');
+		$scope.prevStep = 'step2';
+		//$scope.nextstep = 'step4';
 	}]);

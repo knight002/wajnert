@@ -11,6 +11,34 @@ class IndexController extends Zend_Controller_Action
 	public function indexAction()
 	{
 		// action body
+		$wardrobe = array(
+			'fronts'	=> array(
+				array(
+					'x'	=> 0,
+					'y'	=> 0,
+					'w'	=> 100,
+					'h'	=> 70,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 100,
+					'y'	=> 0,
+					'w'	=> 100,
+					'h'	=> 70,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 0,
+					'y'	=> 70,
+					'w'	=> 100,
+					'h'	=> 70,
+					't'	=> null,
+				),
+			),
+			'acc'		=> array(
+				
+			),
+		);
 
 	}
 	
