@@ -114,6 +114,30 @@ div.selected-items{
 	height: 300px;
 }
 
+div.fronts{
+	position: relative;
+	/*background-color: green;*/
+}
+
+div.front{
+	position: absolute;
+	background-size: cover;
+	background-repeat: repeat;
+	/*background-color: #d8d7d7;*/
+	border: 1px solid gray;
+	cursor: pointer;
+}
+
+div.front.selected{
+	border: 1px solid lightgreen;
+	background-color: lightgreen;
+	opacity: 0.3;
+}
+
+div.front:hover{
+	border: 1px solid #ff9933;
+}
+
 ul.color-menu{
 	list-style-type: none;
 	float: left;

@@ -1,10 +1,15 @@
-<h2>Twoja konfiguracja. Wybierz układ frontów.</h2>
+<h2>Twoja konfiguracja. Wybierz fronty długie.</h2>
 
 <div class="step-nav clearfix">
 	<a href="#{{prevStep}}">
 		<img class="nav left" alt="" src="../images/left-orange1.gif" >
 	</a>
 	<div class="selected-items">
+<!--
+		<ul class="selected-items step3 clearfix">
+			<li><img alt="" src="../images/step3/F1.gif" ></li>
+		</ul>
+-->
 		<div class="fronts">
 			<img alt="" src="../images/step3/{{selectedFile2}}" >
 			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; {{front.background}}"></div>
