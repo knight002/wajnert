@@ -23,18 +23,19 @@ var steps = [
 		'data' : null
 	},
 ];
-var selectedItem = null;
+var selectedItem = {
+	'structure' : null,
+	'item' : null,
+	
+};
 
 wajnertControllers.controller('Step1Ctrl', ['$scope', '$http',
 	function($scope, $http)
 	{
-		console.log($http);
 //		$http.get('phones/phones.json').success(function(data) {
 //			$scope.phones = data;
 //		});
-//
-//		$scope.orderProp = 'age';
-		console.log('step 1 controller');
+
 	}]);
 
 wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
@@ -44,17 +45,19 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 		console.log('step 2 controller');
 		$scope.prevStep = 'step1';
 		$scope.nextStep = 'step3';
-		console.log(db.step2);
-		$scope.items = db.step2;
+//		console.log(db.step2);
+//		$scope.items = db.step2;
+		
+		$scope.items = Core.Func.getDictinctValues(db.step2, 'file');
 		
 		$scope.selectItem = function(item)
 		{
 			//put item in steps
-			selectedItem = item;
-			$scope.selectedFile = selectedItem.file;
+			selectedItem.structure = item;
+			$scope.selectedFile = selectedItem;
 			
-			console.log(selectedItem);
-			console.log(item);
+//			console.log(selectedItem);
+//			console.log(item);
 		}
 
 	}]);
@@ -64,7 +67,23 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 	{
 		console.log('step 3 controller');
 		$scope.prevStep = 'step2';
-		$scope.nextStep = 'step4';		
+		$scope.nextStep = 'step4';
+		
+		//display elements for choosen structure
+		var filterArr = [
+			{'key' : 'file', 'value' : selectedItem.structure}
+		];
+		$scope.items = Core.Func.filterElementsByKey(db.step2, filterArr);
+		//$scope.items = db.step2;	//TODO
+		
+		$scope.selectItem = function(item)	//get items
+		{
+			//put item in steps
+			selectedItem.item = item;
+			$scope.selectedFile2 = selectedItem.item.file2;
+			
+			console.log(selectedItem);
+		}
 		
 	}]);
 
@@ -75,11 +94,11 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 		$scope.prevStep = 'step3';
 		//$scope.nextStep = 'step5';
 		$scope.items = db.textures;
-		if(selectedItem)
+		if(selectedItem.item)
 		{
 			console.log(selectedItem);
-			$scope.selectedFile2 = selectedItem.file2;
-			$scope.fronts = selectedItem.params.fronts;
+			$scope.selectedFile2 = selectedItem.item.file2;
+			$scope.fronts = selectedItem.item.params.fronts;
 		}
 		
 		$scope.selectFront = function(item)
@@ -105,7 +124,7 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 				{
 					selected[key] = item;
 					console.log(key);
-					front.background = "background-image: url('../images/textures/"+item.file+"');" ;
+					front.background = {'background-image' : "url('../images/textures/"+item.file+"')"};// "background-image: url('../images/textures/"+item.file+"');" ;
 					console.log(front.background);
 				}
 				front.selectedClass = null;

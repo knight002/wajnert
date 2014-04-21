@@ -20,7 +20,9 @@
 <div class="items-menu-div">
 	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
 	<ul class="items-menu">
-		<li ng-repeat="item in items"><span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span></li>
+		<li ng-repeat="item in items">
+			<img ng-click="selectItem(item)" alt="" src="../images/step3/{{item.file2}}" >
+		</li>
 	</ul>
 	<img class="nav right" alt="" src="../images/right-arrows1.gif">
 </div>

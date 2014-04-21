@@ -6,7 +6,7 @@
 	</a>
 	<div class="selected-items">
 		<ul class="selected-items clearfix">
-			<li><img alt="" src="../images/step2/{{selectedFile}}" ></li>
+			<li><img alt="" src="../images/step2/{{selectedFile.structure}}" ></li>
 		</ul>
 		<p style="float: left">Wybierz kolor korpusu</p>
 		<ul class="color-menu">
@@ -23,7 +23,7 @@
 <div class="items-menu-div clearfix">
 	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
 	<ul class="items-menu">
-		<li ng-repeat="item in items"><img ng-click="selectItem(item)" alt="" src="../images/step2/{{item.file}}" ></li>
+		<li ng-repeat="item in items"><img ng-click="selectItem(item)" alt="" src="../images/step2/{{item}}" ></li>
 	</ul>
 	<img class="nav right" alt="" src="../images/right-arrows1.gif">
 </div>

@@ -32,10 +32,11 @@ class IndexController extends Zend_Controller_Action
 		$bodiesTable = new Zend_Db_Table($config);
 		
 		$json = array(
-			'bodies'	=> $bodiesTable->fetchAll()->toArray(),
+//			'bodies'	=> $bodiesTable->fetchAll()->toArray(),
 			'step2'		=> $this->getBodies(),
 			'textures'	=> $this->getTextures(),
 		);
+		//Zend_Debug::dump($json);die;
 		echo 'var db = ' . Zend_Json::encode($json) . ';';
 	}
 
@@ -127,9 +128,120 @@ class IndexController extends Zend_Controller_Action
 			),
 		);
 		
+		$wardrobeParams2 = array(
+			'fronts'	=> array(
+				array(
+					'x'	=> 0,
+					'y'	=> 0,
+					'w'	=> 62,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 0,
+					'w'	=> 61,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 127,
+					'y'	=> 0,
+					'w'	=> 61,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 0,
+					'w'	=> 62,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 155,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 155,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 184,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 184,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 213,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 213,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 213,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 242,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 242,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 242,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+			),
+			'acc'		=> array(
+				
+			),
+		);
+		
 		$bodies = array(
 			array(
 				'id'		=> 1,
+				'parent'	=> 1,
 				'file'		=> 'SZF 200.gif',
 				'file2'		=> 'F1_h270.gif',
 				'color'		=> '000000',
@@ -138,44 +250,53 @@ class IndexController extends Zend_Controller_Action
 			),
 			array(
 				'id'		=> 2,
+				'parent'	=> 1,
+				'file'		=> 'SZF 200.gif',
+				'file2'		=> 'F2_h270.gif',
+				'color'		=> '000000',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams2,
+			),
+			array(	//SOME OTHER ELEMENT
+				'id'		=> 3,
 				'file'		=> 'SZF konf 2.gif',
 				'file2'		=> 'F2.gif',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams,
 			),
-			array(
-				'id'		=> 3,
-				'file'		=> 'SZF konf 3.gif',
-				'file2'		=> 'F3.gif',
-				'color'		=> '000000',
-				'type'		=> self::WARDROBE,
-				'params'	=> $wardrobeParams,
-			),
-			array(
-				'id'		=> 4,
-				'file'		=> 'SZF konf 4.gif',
-				'file2'		=> 'F4.gif',
-				'color'		=> '000000',
-				'type'		=> self::WARDROBE,
-				'params'	=> $wardrobeParams,
-			),
-			array(
-				'id'		=> 5,
-				'file'		=> 'SZF konf 5.gif',
-				'file2'		=> 'F5.gif',
-				'color'		=> '000000',
-				'type'		=> self::WARDROBE,
-				'params'	=> $wardrobeParams,
-			),
-			array(
-				'id'		=> 6,
-				'file'		=> 'SZF konf 6.gif',
-				'file2'		=> 'F6.gif',
-				'color'		=> '000000',
-				'type'		=> self::WARDROBE,
-				'params'	=> $wardrobeParams,
-			),			
+//			array(
+//				'id'		=> 3,
+//				'file'		=> 'SZF konf 3.gif',
+//				'file2'		=> 'F3.gif',
+//				'color'		=> '000000',
+//				'type'		=> self::WARDROBE,
+//				'params'	=> $wardrobeParams,
+//			),
+//			array(
+//				'id'		=> 4,
+//				'file'		=> 'SZF konf 4.gif',
+//				'file2'		=> 'F4.gif',
+//				'color'		=> '000000',
+//				'type'		=> self::WARDROBE,
+//				'params'	=> $wardrobeParams,
+//			),
+//			array(
+//				'id'		=> 5,
+//				'file'		=> 'SZF konf 5.gif',
+//				'file2'		=> 'F5.gif',
+//				'color'		=> '000000',
+//				'type'		=> self::WARDROBE,
+//				'params'	=> $wardrobeParams,
+//			),
+//			array(
+//				'id'		=> 6,
+//				'file'		=> 'SZF konf 6.gif',
+//				'file2'		=> 'F6.gif',
+//				'color'		=> '000000',
+//				'type'		=> self::WARDROBE,
+//				'params'	=> $wardrobeParams,
+//			),			
 		);
 		
 		//Zend_Debug::dump($bodies);

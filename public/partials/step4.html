@@ -12,7 +12,7 @@
 -->
 		<div class="fronts">
 			<img alt="" src="../images/step3/{{selectedFile2}}" >
-			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; {{front.background}}"></div>
+			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.background"></div>
 
 		</div>
 	</div>
