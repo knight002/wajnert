@@ -9,20 +9,6 @@
 /* Controllers */
 
 var wajnertControllers = angular.module('wajnertControllers', []);
-var steps = [
-	{
-		'name' : 'step1',
-		'data' : null
-	},
-	{
-		'name' : 'step2',
-		'data' : null
-	},
-	{
-		'name' : 'step3',
-		'data' : null
-	},
-];
 var selectedItem = {
 	'structure' : null,
 	'item' : null,
@@ -41,24 +27,20 @@ wajnertControllers.controller('Step1Ctrl', ['$scope', '$http',
 wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-//		$scope.phoneId = $routeParams.phoneId;
 		console.log('step 2 controller');
 		$scope.prevStep = 'step1';
 		$scope.nextStep = 'step3';
-//		console.log(db.step2);
-//		$scope.items = db.step2;
 		
-		$scope.items = Core.Func.getDictinctValues(db.step2, 'file');
+		$scope.items = Core.Func.getDictinctValues2(db.step2, 'file');
+		//load the first element
+		selectedItem.structure = $scope.items[0];
 		
 		$scope.selectItem = function(item)
 		{
 			//put item in steps
 			selectedItem.structure = item;
-			$scope.selectedFile = selectedItem;
-			
-//			console.log(selectedItem);
-//			console.log(item);
 		}
+		$scope.selectedFile = selectedItem;
 
 	}]);
 
@@ -74,16 +56,15 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 			{'key' : 'file', 'value' : selectedItem.structure}
 		];
 		$scope.items = Core.Func.filterElementsByKey(db.step2, filterArr);
-		//$scope.items = db.step2;	//TODO
+		selectedItem.item = $scope.items[0];
 		
 		$scope.selectItem = function(item)	//get items
 		{
 			//put item in steps
 			selectedItem.item = item;
 			$scope.selectedFile2 = selectedItem.item.file2;
-			
-			console.log(selectedItem);
 		}
+		$scope.selectedFile2 = selectedItem.item.file2;
 		
 	}]);
 

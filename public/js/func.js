@@ -13,6 +13,25 @@ Core.Func = {
 		});
 		return arr2;
 	},
+
+	getDictinctValues2 : function(arr, key)
+	{
+		var k2 = key;
+		var arr2 = {};
+		arr.forEach(function(value, key){
+			k = value[k2];
+			arr2[k] = k;
+		});
+
+		var i = 0;
+		var arr3 = [];
+		for(v in arr2)
+		{
+			arr3[i++] = v;
+		}
+
+		return arr3;
+	},
 	
 	filterElementsByKey : function(arr, keys)
 	{
