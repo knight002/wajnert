@@ -5,14 +5,16 @@
 		<img class="nav left" alt="" src="../images/left-orange1.gif" >
 	</a>
 	<div class="selected-items">
-		<ul class="selected-items clearfix">
-			<li><img alt="" src="../images/step2/{{selectedFile.structure}}" ></li>
-		</ul>
-		<p style="float: left">Wybierz kolor korpusu</p>
-		<ul class="color-menu">
-			<li><span style="background-color: white"></span></li>
-			<li><span style="background-color: black"></span></li>
-		</ul>
+		<div class="wireframe">
+			<img alt="" src="../images/step2/{{selectedFile.structure}}" >
+		</div>
+		<div class="color-selector">
+			<span>Wybierz kolor korpusu</span>
+			<ul class="color-menu">
+				<li><span style="background-color: white"></span></li>
+				<li><span style="background-color: black"></span></li>
+			</ul>
+		</div>
 	</div>
 
 	<a href="#{{nextStep}}">
@@ -23,7 +25,7 @@
 <div class="items-menu-div clearfix">
 	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
 	<ul class="items-menu">
-		<li ng-repeat="item in items"><img ng-click="selectItem(item)" alt="" src="../images/step2/{{item}}" ></li>
+		<li ng-repeat="item in items"><img ng-click="selectItem(item)" alt="" src="../images/step2/h160/{{item}}" ></li>
 	</ul>
 	<img class="nav right" alt="" src="../images/right-arrows1.gif">
 </div>

@@ -11,8 +11,6 @@ class IndexController extends Zend_Controller_Action
 	{
 		/* Initialize action controller here */
 	}
-//wal sie na ryj
-//nie nawidze cie
 	
 	public function indexAction()
 	{
@@ -83,13 +81,6 @@ class IndexController extends Zend_Controller_Action
 	private function getBodies()
 	{
 		//types: wardrobe, bed, commode
-		$body = array(
-			'id'		=> 1,
-			'file'		=> 'SZF 200.gif',
-			'color'		=> '000000',
-			'params'	=> array(),
-			'type'		=> self::WARDROBE,
-		);
 		
 		// action body
 		$wardrobeParams = array(
@@ -238,11 +229,204 @@ class IndexController extends Zend_Controller_Action
 			),
 		);
 		
+		$wardrobeParams3 = array(
+			'fronts'	=> array(
+				array(
+					'x'	=> 0,
+					'y'	=> 0,
+					'w'	=> 62,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 0,
+					'w'	=> 61,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 127,
+					'y'	=> 0,
+					'w'	=> 61,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 0,
+					'w'	=> 62,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 155,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 155,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 155,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 184,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 184,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 184,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 213,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 213,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 213,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 0,
+					'y'	=> 242,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 242,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 242,
+					'w'	=> 62,
+					'h'	=> 27,
+					't'	=> null,
+				),
+			),
+			'acc'		=> array(
+				
+			),
+		);
+		
+		$wardrobeParams4 = array(
+			'fronts'	=> array(
+				array(
+					'x'	=> 0,
+					'y'	=> 0,
+					'w'	=> 62,
+					'h'	=> 270,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 64,
+					'y'	=> 0,
+					'w'	=> 61,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 127,
+					'y'	=> 0,
+					'w'	=> 61,
+					'h'	=> 153,
+					't'	=> null,
+				),
+				array(
+					'x'	=> 190,
+					'y'	=> 0,
+					'w'	=> 62,
+					'h'	=> 270,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 64,
+					'y'	=> 155,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 64,
+					'y'	=> 184,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 64,
+					'y'	=> 213,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+				////////
+				array(
+					'x'	=> 64,
+					'y'	=> 242,
+					'w'	=> 124,
+					'h'	=> 27,
+					't'	=> null,
+				),
+			),
+			'acc'		=> array(
+				
+			),
+		);
+		
 		$bodies = array(
 			array(
 				'id'		=> 1,
 				'parent'	=> 1,
-				'file'		=> 'SZF 200.gif',
+				'name'		=> 'Szafa 200 F1',
+				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F1_h270.gif',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
@@ -251,16 +435,37 @@ class IndexController extends Zend_Controller_Action
 			array(
 				'id'		=> 2,
 				'parent'	=> 1,
-				'file'		=> 'SZF 200.gif',
+				'name'		=> 'Szafa 200 F2',
+				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F2_h270.gif',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams2,
 			),
-			array(	//SOME OTHER ELEMENT
+			array(
 				'id'		=> 3,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F3',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F3_h270.gif',
+				'color'		=> '000000',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams3,
+			),
+			array(
+				'id'		=> 4,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F4',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F4_h270.gif',
+				'color'		=> '000000',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams4,
+			),
+			array(	//SOME OTHER ELEMENT
+				'id'		=> 33,
 				'file'		=> 'SZF konf 2.gif',
-				'file2'		=> 'F2.gif',
+				'file2'		=> 'you1.jpg',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams,

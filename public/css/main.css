@@ -25,9 +25,11 @@ and open the template in the editor.
 /**/
 
 body{
-	background-image: url('../images/konfigurator_1a.png');
+	/*background-image: url('../images/konfigurator_1a.png');*/
 	background-repeat: no-repeat;
 	background-position: center top;
+	font-family: sans-serif;
+	font-weight: normal;
 }
 
 .section-outer{
@@ -50,7 +52,7 @@ body{
 }
 
 .section-outer .section-inner.section-top{
-	background-image: url('../images/konfigurator_1a.png');
+	/*background-image: url('../images/konfigurator_1a.png');*/
 }
 
 .section-middle{
@@ -66,14 +68,33 @@ body{
 }
 
 .section-outer .section-inner.section-bottom{
-	background-image: url('../images/konfigurator_1a.png');
+	/*background-image: url('../images/konfigurator_1a.png');*/
 	background-position: center bottom;
+}
+
+h2{
+	color: #666666;
+	font-size: 18px;
+}
+
+.centerize{
+	text-align: center;
 }
 
 /**/
 
 ul.menu2{
 	list-style-type: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul.menu2.px425{
+	width: 425px;
+}
+
+ul.menu2.px180{
+	width: 180px;
 }
 
 ul.menu2 li{
@@ -117,6 +138,19 @@ div.selected-items{
 div.fronts{
 	position: relative;
 	/*background-color: green;*/
+	
+	/* TODO - different sizes of wardrobes*/
+	width: 254px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.wireframe{
+	max-height: 220px;
+}
+
+div.wireframe img{
+	max-height: 200px;
 }
 
 div.front{
@@ -138,14 +172,27 @@ div.front:hover{
 	border: 1px solid #ff9933;
 }
 
+div.color-selector{
+	text-align: center;
+	padding-top: 10px;
+}
+
+div.color-selector span{
+	font-size: 13px;
+	color: #666;
+	display: block;
+}
+
 ul.color-menu{
 	list-style-type: none;
-	float: left;
-	width: 200px;
+	display: inline-block;
+	padding-left: 12px;
+	/*float: left;*/
+	/*width: 200px;*/
 }
 
 ul.color-menu li{
-	
+	float: left;
 }
 
 ul.color-menu li a{
@@ -193,6 +240,7 @@ div.items-menu-div{
 	border: 1px solid #b7b7b7;
 	width: 796px;
 	height: 185px;
+	margin: 0 auto;
 }
 
 div.items-menu-div img.nav{
