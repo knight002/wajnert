@@ -153,6 +153,15 @@ div.wireframe img{
 	max-height: 200px;
 }
 
+div.standard-selected-item{
+	position: relative;
+	max-height: 270px;
+}
+
+div.standard-selected-item img{
+	max-height: 270px;
+}
+
 div.front{
 	position: absolute;
 	background-size: cover;

@@ -36,6 +36,14 @@ wajnertApp.config(['$routeProvider',
 				templateUrl: 'partials/step4.html',
 				controller: 'Step4Ctrl'
 			}).
+			when('/step5', {
+				templateUrl: 'partials/step5.html',
+				controller: 'Step5Ctrl'
+			}).
+			when('/step6', {
+				templateUrl: 'partials/step6.html',
+				controller: 'Step6Ctrl'
+			}).
 			otherwise({
 				redirectTo: '/step1'
 			});

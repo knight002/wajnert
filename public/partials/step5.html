@@ -1,0 +1,26 @@
+<h2>Twoja konfiguracja. Wybierz kolor półki.</h2>
+
+<div class="step-nav clearfix">
+	<a href="#{{prevStep}}">
+		<img class="nav left" alt="" src="../images/left-orange1.gif" >
+	</a>
+	<div class="selected-items">
+		<div class="standard-selected-item">
+			<img alt="" src="../images/shelves/{{selectedItem.file}}" >
+		</div>
+	</div>
+
+	<a href="#{{nextStep}}">
+		<img class="nav right" alt="" src="../images/right-orange1.gif" >
+	</a>
+</div>
+
+<div class="items-menu-div">
+	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+	<ul class="items-menu">
+		<li ng-repeat="item in items">
+			<img ng-click="selectItem(item)" alt="" src="../images/shelves/{{item.file}}" >
+		</li>
+	</ul>
+	<img class="nav right" alt="" src="../images/right-arrows1.gif">
+</div>

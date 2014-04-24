@@ -12,6 +12,8 @@ var wajnertControllers = angular.module('wajnertControllers', []);
 var selectedItem = {
 	'structure' : null,
 	'item' : null,
+	'color' : null,
+	'shelve' : null
 	
 };
 
@@ -30,16 +32,29 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 		console.log('step 2 controller');
 		$scope.prevStep = 'step1';
 		$scope.nextStep = 'step3';
-		
-		$scope.items = Core.Func.getDictinctValues2(db.step2, 'file');
+
+		$scope.colors = Core.Func.getDistinctValues2(db.step2, 'color');
+		console.log($scope.colors);
+		selectedItem.color = Core.Func.getFirst($scope.colors);
+		console.log(selectedItem.color);
+
+		$scope.items = Core.Func.getDistinctValues2(db.step2, 'file');
 		//load the first element
-		selectedItem.structure = $scope.items[0];
+		selectedItem.structure = Core.Func.getFirst($scope.items);
 		
 		$scope.selectItem = function(item)
 		{
 			//put item in steps
 			selectedItem.structure = item;
 		}
+		
+		$scope.selectColor = function(item)
+		{
+			console.log(item);
+			//put item in steps
+			selectedItem.color = item;
+		}
+		
 		$scope.selectedFile = selectedItem;
 
 	}]);
@@ -131,50 +146,22 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 		console.log('step 5 controller');
 		$scope.prevStep = 'step4';
 		$scope.nextStep = 'step6';
-		$scope.items = db.textures;
 		
 		if(!selectedItem.structure)
 			document.location = '#step2';
-		
-		if(selectedItem.item)
-		{
-			console.log(selectedItem);
-			$scope.selectedFile2 = selectedItem.item.file2;
-			$scope.fronts = selectedItem.item.params.fronts;
-		}
-		
-		$scope.selectFront = function(item)
-		{
-			//console.log(item);
-			if(item.selectedClass == 'selected')
-				item.selectedClass = null;
-			else
-				item.selectedClass = 'selected';
-			//angular.element(this).toggleClass('selected');
-			//$(item).toggleClass('selected');
-			
-		}
-		
-		$scope.selectItem = function(item)
-		{
-			console.log(item);
-			console.log(this);
-			console.log($scope.fronts);
-			var selected = [];
-			angular.forEach($scope.fronts, function(front, key) {
-				if(front.selectedClass != null && typeof front.selectedClass != 'undefined')
-				{
-					selected[key] = item;
-					console.log(key);
-					front.background = {'background-image' : "url('../images/textures/"+item.file+"')"};// "background-image: url('../images/textures/"+item.file+"');" ;
-					console.log(front.background);
-				}
-				front.selectedClass = null;
-			});
-			console.log(selected);
 
-			
-		}
+		console.log(db.shelves);
+		$scope.items = db.shelves;
+		selectedItem.shelve = Core.Func.getFirst($scope.items);
+		console.log(selectedItem.shelve);
 		
+		$scope.selectItem = function(item)	//get items
+		{
+			//put item in steps
+			selectedItem.shelve = item;
+			$scope.selectedItem = selectedItem.shelve;
+		}
+		$scope.selectedItem = selectedItem.shelve;
+		console.log($scope.selectedItem);
 		
 	}]);

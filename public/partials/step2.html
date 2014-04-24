@@ -10,9 +10,8 @@
 		</div>
 		<div class="color-selector">
 			<span>Wybierz kolor korpusu</span>
-			<ul class="color-menu">
-				<li><span style="background-color: white"></span></li>
-				<li><span style="background-color: black"></span></li>
+			<ul class="color-menu">				
+				<li ng-repeat="color in colors"><span ng-click="selectColor(color)" ng-style="color.style" style="background-color: #{{color}}"></span></li>
 			</ul>
 		</div>
 	</div>

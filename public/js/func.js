@@ -3,7 +3,7 @@ if(typeof Core === "undefined")
 	var Core = {};
 
 Core.Func = {
-	getDictinctValues : function(arr, key)
+	getDistinctValues : function(arr, key)
 	{
 		var k2 = key;
 		var arr2 = {};
@@ -14,7 +14,7 @@ Core.Func = {
 		return arr2;
 	},
 
-	getDictinctValues2 : function(arr, key)
+	getDistinctValues2 : function(arr, key)
 	{
 		var k2 = key;
 		var arr2 = {};
@@ -46,5 +46,16 @@ Core.Func = {
 
 		});
 		return arr2;
+	},
+	
+	getFirst : function(arr)
+	{
+		for(v in arr)
+		{
+			return arr[v];
+		}
+//		arr.forEach(function(value, key){
+//			return {key : value};
+//		});
 	}
 };

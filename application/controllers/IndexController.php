@@ -33,6 +33,7 @@ class IndexController extends Zend_Controller_Action
 //			'bodies'	=> $bodiesTable->fetchAll()->toArray(),
 			'step2'		=> $this->getBodies(),
 			'textures'	=> $this->getTextures(),
+			'shelves'	=> $this->getShelves(),
 		);
 		//Zend_Debug::dump($json);die;
 		echo 'var db = ' . Zend_Json::encode($json) . ';';
@@ -64,6 +65,23 @@ class IndexController extends Zend_Controller_Action
 	private function getTextures()
 	{
 		$dirContents = scandir(APPLICATION_PATH . '/../public/images/textures');
+		$arr = array();
+		foreach($dirContents as $k => $v)
+		{
+			if(stripos(" ".$v,'.') != 1)
+			{
+				$exp = array_reverse(explode('.', $v));
+				$arr[$k]['id'] = $k;
+				$arr[$k]['file'] = $v;
+			}
+			
+		}
+		return $arr;
+	}
+	
+	private function getShelves()
+	{
+		$dirContents = scandir(APPLICATION_PATH . '/../public/images/shelves');
 		$arr = array();
 		foreach($dirContents as $k => $v)
 		{
@@ -462,6 +480,48 @@ class IndexController extends Zend_Controller_Action
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams4,
 			),
+			
+			array(
+				'id'		=> 11,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F1',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F1_h270.gif',
+				'color'		=> 'ffffff',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams,
+			),
+			array(
+				'id'		=> 12,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F2',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F2_h270.gif',
+				'color'		=> 'ffffff',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams2,
+			),
+			array(
+				'id'		=> 13,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F3',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F3_h270.gif',
+				'color'		=> 'ffffff',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams3,
+			),
+			array(
+				'id'		=> 14,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F4',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F4_h270.gif',
+				'color'		=> 'ffffff',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams4,
+			),
+			
 			array(	//SOME OTHER ELEMENT
 				'id'		=> 33,
 				'file'		=> 'SZF konf 2.gif',
