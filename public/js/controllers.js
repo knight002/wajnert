@@ -65,13 +65,15 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 		console.log('step 3 controller');
 		$scope.prevStep = 'step2';
 		$scope.nextStep = 'step4';
+		$scope.color = selectedItem.color;
 		
 		if(!selectedItem.structure)
 			document.location = '#step2';
 		
 		//display elements for choosen structure
 		var filterArr = [
-			{'key' : 'file', 'value' : selectedItem.structure}
+			{'key' : 'file', 'value' : selectedItem.structure},
+			{'key' : 'color', 'value' : selectedItem.color}
 		];
 		$scope.items = Core.Func.filterElementsByKey(db.step2, filterArr);
 		selectedItem.item = $scope.items[0];
@@ -92,6 +94,7 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 		console.log('step 4 controller');
 		$scope.prevStep = 'step3';
 		$scope.nextStep = 'step5';
+		$scope.color = selectedItem.color;
 		$scope.items = db.textures;
 		
 		if(!selectedItem.structure)

@@ -6,7 +6,7 @@
 	</a>
 	<div class="selected-items">
 		<div class="fronts">
-			<img alt="" src="../images/step3/{{selectedFile2}}" >
+			<img alt="" src="../images/step3/{{color}}/{{selectedFile2}}" >
 			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; {{front.background}}"></div>
 
 		</div>
@@ -21,7 +21,7 @@
 	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
 	<ul class="items-menu">
 		<li ng-repeat="item in items">
-			<img ng-click="selectItem(item)" alt="" src="../images/step3/{{item.file2}}" >
+			<img ng-click="selectItem(item)" alt="" src="../images/step3/{{color}}/{{item.file2}}" >
 		</li>
 	</ul>
 	<img class="nav right" alt="" src="../images/right-arrows1.gif">
