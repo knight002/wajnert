@@ -14,7 +14,8 @@ $(document).ready(function(){
 
 var wajnertApp = angular.module('wajnertApp', [
   'ngRoute',
-  'wajnertControllers'
+  'wajnertControllers',
+  'ngDragDrop'
 ]);
 
 wajnertApp.config(['$routeProvider',
@@ -43,6 +44,10 @@ wajnertApp.config(['$routeProvider',
 			when('/step6', {
 				templateUrl: 'partials/step6.html',
 				controller: 'Step6Ctrl'
+			}).
+			when('/step7', {
+				templateUrl: 'partials/step7.html',
+				controller: 'Step7Ctrl'
 			}).
 			otherwise({
 				redirectTo: '/step1'

@@ -1,7 +1,9 @@
 /nbproject
 /tmp
+tmp
 .DS_Store
 .mwb.bak
 /library/Zend
 /library/ZendX
 *.mwb.bak
+~~*

@@ -7,7 +7,7 @@ function BodyController($scope)
 		{'name': 'step 2'},
 		{'name': 'step 3'}
 	];
-	console.log($scope.steps[1]);
+	//console.log($scope.steps[1]);
 	$scope.dupa = 'this is a test';
 
 }
