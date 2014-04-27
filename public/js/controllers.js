@@ -229,3 +229,40 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 		
 	}]);
 
+wajnertControllers.controller('DndCtrl', ['$scope', '$routeParams',
+	function($scope, $routeParams)
+	{		
+		$scope.selectedItem = selectedItem;
+		$scope.fronts = db.step2[0].params.fronts;
+		$scope.items = db.accessories;
+		$scope.list2 = {};
+		
+
+		$scope.placeholders = [
+			{'items' : [{ 'title': 'Item 1', 'drag': true }, { 'title': 'Item 2', 'drag': true }], 'list' : 'list1'},
+			{'items' : [], 'list' : 'list2'},
+			{'items' : [], 'list' : 'list3'},
+		];
+	console.log($scope.placeholders);
+
+	$scope.list1 = $scope.placeholders[0];
+	
+	console.log($scope.list1);
+
+//  $scope.list1 = [];
+//  $scope.list2 = [];
+//  $scope.list3 = [];
+//  $scope.list4 = [];
+  
+  $scope.list5 = [
+//    { 'title': 'Item 1', 'drag': true },
+//    { 'title': 'Item 2', 'drag': true },
+    { 'title': 'Item 3', 'drag': true },
+    { 'title': 'Item 4', 'drag': true },
+    { 'title': 'Item 5', 'drag': true },
+    { 'title': 'Item 6', 'drag': true },
+    { 'title': 'Item 7', 'drag': true },
+    { 'title': 'Item 8', 'drag': true }
+  ]; 
+
+	}]);
