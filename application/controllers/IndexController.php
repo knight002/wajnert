@@ -23,77 +23,73 @@ class IndexController extends Zend_Controller_Action
 		$this->_helper->layout()->disableLayout();
 		$this->_response->setHeader('Content-type', "application/javascript");
 
-		$config = array(
-			'name'		=> 'bodies',
-			'primary'	=> 'id',
-		);
-		$bodiesTable = new Zend_Db_Table($config);
+		$json = $this->prepareData();
+		//Zend_Debug::dump($json);die;
+		echo 'var db = ' . Zend_Json::encode($json) . ';';
+	}
+	
+	private function prepareData()
+	{
+//		$config = array(
+//			'name'		=> 'bodies',
+//			'primary'	=> 'id',
+//		);
+//		$bodiesTable = new Zend_Db_Table($config);
 		
 		$json = array(
 //			'bodies'	=> $bodiesTable->fetchAll()->toArray(),
 			'step2'		=> $this->getBodies(),
 			'textures'	=> $this->getTextures(),
 			'shelves'	=> $this->getShelves(),
+			'handles'	=> $this->getHandles(),
+			'accessories'	=> $this->getAccessories(),
 		);
-		//Zend_Debug::dump($json);die;
-		echo 'var db = ' . Zend_Json::encode($json) . ';';
+		return $json;
 	}
 
-	public function partialsAction()
+	private function getFilesInDir($path)
 	{
-		
-	}
-
-	private function scan1()
-	{
-		$dirContents = scandir(APPLICATION_PATH . '/../public/images/step2');
+		$dirContents = scandir($path);
 		$arr = array();
 		foreach($dirContents as $k => $v)
 		{
 			if(stripos(" ".$v,'.') != 1)
 			{
-				$exp = array_reverse(explode('.', $v));
-				if($exp[0] == 'gif')
-					$arr[$k] = $v;
+				if(is_file($path.$v))
+				{
+					$exp = explode('.', $v);
+					$expRev = array_reverse(explode('.', $v));
+					$arr[$k]['id'] = $k;
+					$arr[$k]['drag'] = true;
+					$arr[$k]['file'] = $exp[0];
+				}
 			}
 			
 		}
-		//Zend_Debug::dump($arr);
 		return $arr;
 	}
 	
 	private function getTextures()
 	{
-		$dirContents = scandir(APPLICATION_PATH . '/../public/images/textures');
-		$arr = array();
-		foreach($dirContents as $k => $v)
-		{
-			if(stripos(" ".$v,'.') != 1)
-			{
-				$exp = array_reverse(explode('.', $v));
-				$arr[$k]['id'] = $k;
-				$arr[$k]['file'] = $v;
-			}
-			
-		}
-		return $arr;
+		return $this->getFilesInDir(APPLICATION_PATH . '/../public/images/textures/');
 	}
 	
 	private function getShelves()
 	{
-		$dirContents = scandir(APPLICATION_PATH . '/../public/images/shelves');
-		$arr = array();
-		foreach($dirContents as $k => $v)
-		{
-			if(stripos(" ".$v,'.') != 1)
-			{
-				$exp = array_reverse(explode('.', $v));
-				$arr[$k]['id'] = $k;
-				$arr[$k]['file'] = $v;
-			}
-			
-		}
-		return $arr;
+		$path = APPLICATION_PATH . '/../public/images/shelves/';
+		return $this->getFilesInDir($path);
+	}
+	
+	private function getHandles()
+	{
+		$path = APPLICATION_PATH . '/../public/images/handles/';
+		return $this->getFilesInDir($path);
+	}
+	
+	private function getAccessories()
+	{
+		$path = APPLICATION_PATH . '/../public/images/accessories/';
+		return $this->getFilesInDir($path);
 	}
 	
 	private function getBodies()
@@ -244,6 +240,15 @@ class IndexController extends Zend_Controller_Action
 			),
 			'acc'		=> array(
 				
+			),
+			'shelves'	=> array(
+				array(
+					'x'	=> 64,
+					'y'	=> 155,
+					'w'	=> 124,
+					'h'	=> 27+27+2,
+					't'	=> null,
+				),
 			),
 		);
 		
@@ -446,6 +451,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F1',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F1_h270.gif',
+				'interior'	=> 'SZF.200 K5',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams,
@@ -456,6 +462,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F2',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F2_h270.gif',
+				'interior'	=> 'SZF.200 Kx',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams2,
@@ -466,6 +473,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F3',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F3_h270.gif',
+				'interior'	=> 'SZF.200 Kx',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams3,
@@ -476,6 +484,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F4',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F4_h270.gif',
+				'interior'	=> 'SZF.200 Kx',
 				'color'		=> '000000',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams4,
@@ -487,6 +496,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F1',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F1_h270.gif',
+				'interior'	=> 'SZF.200 K5',
 				'color'		=> 'ffffff',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams,
@@ -497,6 +507,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F2',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F2_h270.gif',
+				'interior'	=> 'SZF.200 Kx',
 				'color'		=> 'ffffff',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams2,
@@ -507,6 +518,7 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F3',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F3_h270.gif',
+				'interior'	=> 'SZF.200 Kx',
 				'color'		=> 'ffffff',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams3,
@@ -517,19 +529,20 @@ class IndexController extends Zend_Controller_Action
 				'name'		=> 'Szafa 200 F4',
 				'file'		=> 'SZF-200.gif',
 				'file2'		=> 'F4_h270.gif',
+				'interior'	=> 'SZF.200 Kx',
 				'color'		=> 'ffffff',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams4,
 			),
 			
-			array(	//SOME OTHER ELEMENT
-				'id'		=> 33,
-				'file'		=> 'SZF konf 2.gif',
-				'file2'		=> 'you1.jpg',
-				'color'		=> '000000',
-				'type'		=> self::WARDROBE,
-				'params'	=> $wardrobeParams,
-			),
+//			array(	//SOME OTHER ELEMENT
+//				'id'		=> 33,
+//				'file'		=> 'SZF konf 2.gif',
+//				'file2'		=> 'you1.jpg',
+//				'color'		=> '000000',
+//				'type'		=> self::WARDROBE,
+//				'params'	=> $wardrobeParams,
+//			),
 //			array(
 //				'id'		=> 3,
 //				'file'		=> 'SZF konf 3.gif',
@@ -572,6 +585,7 @@ class IndexController extends Zend_Controller_Action
 	{
 		$this->_helper->viewRenderer->setNoRender(true);
 		$this->_helper->layout()->disableLayout();
+		Zend_Debug::dump($this->prepareData());
 	}
 
 }

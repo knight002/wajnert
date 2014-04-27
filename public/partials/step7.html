@@ -14,7 +14,7 @@
 		</div>
 		
 		<div class="fronts interior">
-			<img alt="" src="../images/interiors/{{selectedItem.item.interior}}" >
+			<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
 			<div ng-repeat="front in fronts"
 				 
 				 class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ></div>
