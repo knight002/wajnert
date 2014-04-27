@@ -92,13 +92,16 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
 		console.log('step 4 controller');
-		$scope.prevStep = 'step3';
-		$scope.nextStep = 'step5';
-		$scope.color = selectedItem.color;
-		$scope.items = db.textures;
-		
 		if(!selectedItem.structure)
 			document.location = '#step2';
+
+		$scope.prevStep = 'step3';
+		if(typeof selectedItem.item.params.shelves != 'undefined')
+			$scope.nextStep = 'step5';
+		else
+			$scope.nextStep = 'step6';
+		$scope.color = selectedItem.color;
+		$scope.items = db.textures;
 		
 		if(selectedItem.item)
 		{
@@ -130,7 +133,10 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 				{
 					selected[key] = item;
 					console.log(key);
-					front.background = {'background-image' : "url('../images/textures/"+item.file+"')"};// "background-image: url('../images/textures/"+item.file+"');" ;
+					var horizontal = front.w > front.h ? 'horizontal/' : '';
+					front.styles = {
+						'background-image' : "url('../images/textures/"+horizontal+item.file+"')"
+					};
 					console.log(front.background);
 				}
 				front.selectedClass = null;
@@ -168,3 +174,34 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 		console.log($scope.selectedItem);
 		
 	}]);
+
+wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
+	function($scope, $routeParams)
+	{
+		console.log('step 6 controller');
+		if(!selectedItem.structure)
+			document.location = '#step2';
+
+		if(typeof selectedItem.item.params.shelves != 'undefined')
+			$scope.prevStep = 'step5';
+		else
+			$scope.prevStep = 'step4';
+		
+		$scope.nextStep = 'step7';
+		
+		$scope.selectedItem = selectedItem;
+		$scope.fronts = selectedItem.item.params.fronts;
+		$scope.items = db.accessories;
+		
+		if(typeof selectedItem.item.params.shelves != 'undefined')
+		{
+			var shelves = selectedItem.item.params.shelves;
+			shelves[0].t = selectedItem.shelve.file;
+			shelves[0].styles = {
+				'background-image' : "url('../images/shelves/front/"+selectedItem.shelve.file+"')"
+			};
+			$scope.shelves = shelves;
+		}
+		
+	}]);
+

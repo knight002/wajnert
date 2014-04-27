@@ -145,6 +145,20 @@ div.fronts{
 	margin-right: auto;
 }
 
+div.fronts.exterior{
+	float: left;
+	min-height: 270px;
+	margin-left: 100px;
+	margin-right: 0px;
+}
+
+div.fronts.interior{
+	float: right;
+	min-height: 270px;
+	margin-left: 0px;
+	margin-right: 100px;
+}
+
 div.wireframe{
 	max-height: 220px;
 }
@@ -162,23 +176,26 @@ div.standard-selected-item img{
 	max-height: 270px;
 }
 
-div.front{
+div.front, div.shelve{
 	position: absolute;
 	background-size: cover;
 	background-repeat: repeat;
 	/*background-color: #d8d7d7;*/
 	border: 1px solid gray;
+}
+
+div.front.selectable{
 	cursor: pointer;
+}
+
+div.front.selectable:hover{
+	border: 1px solid #ff9933;
 }
 
 div.front.selected{
 	border: 1px solid lightgreen;
 	background-color: lightgreen;
 	opacity: 0.3;
-}
-
-div.front:hover{
-	border: 1px solid #ff9933;
 }
 
 div.color-selector{
@@ -268,6 +285,7 @@ div.items-menu-div img.nav.right{
 ul.items-menu{
 	list-style-type: none;
 	overflow: hidden;
+/*	overflow: visible;*/
 	height: 100%;
 	float: left;
 	margin: 0;
@@ -287,6 +305,10 @@ ul.items-menu li img{
 	margin: 12px;
 	max-height: 160px;
 	cursor: pointer;
+}
+
+ul.items-menu.accessories li img{
+/*	max-width: 160px;*/
 }
 
 ul.items-menu li span.texture-item{

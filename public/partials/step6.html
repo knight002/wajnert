@@ -1,0 +1,40 @@
+<h2>Twoja konfiguracja. Wybierz dodatki.</h2>
+
+<div class="step-nav clearfix">
+	<a href="#{{prevStep}}">
+		<img class="nav left" alt="" src="../images/left-orange1.gif" >
+	</a>
+	<div class="selected-items">
+		<div class="fronts exterior">
+<!--			<img alt="" src="../images/shelves/{{selectedItem.file}}" >-->
+			<div ng-repeat="front in fronts"
+
+				 class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles"></div>
+			<div ng-repeat="shelve in shelves" class="shelve {{shelve.selectedClass}}" ng-click="selectFront(shelve)" style="left: {{shelve.x}}px; top: {{shelve.y}}px; width: {{shelve.w}}px; height: {{shelve.h}}px; " ng-style="shelve.styles"></div>
+		</div>
+		
+		<div class="fronts interior">
+			<img alt="" src="../images/interiors/{{selectedItem.item.interior}}" >
+			<div ng-repeat="front in fronts"
+				 
+				 class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ></div>
+		</div>
+	</div>
+<!--
+	<a href="#{{nextStep}}">
+		<img class="nav right" alt="" src="../images/right-orange1.gif" >
+	</a>
+	-->
+</div>
+
+<div class="items-menu-div">
+	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+	<ul class="items-menu accessories">
+		<li ng-repeat="item in items" 
+
+			>
+			<img ng-click="selectItem(item)" alt="" src="../images/accessories/{{item.file}}" >
+		</li>
+	</ul>
+	<img class="nav right" alt="" src="../images/right-arrows1.gif">
+</div>
