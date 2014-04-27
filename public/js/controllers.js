@@ -13,7 +13,8 @@ var selectedItem = {
 	'structure' : null,
 	'item' : null,
 	'color' : null,
-	'shelve' : null
+	'shelve' : null,
+	'handle' : null
 	
 };
 
@@ -63,13 +64,12 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
 		console.log('step 3 controller');
+		if(!selectedItem.structure)
+			document.location = '#step2';
 		$scope.prevStep = 'step2';
 		$scope.nextStep = 'step4';
 		$scope.color = selectedItem.color;
-		
-		if(!selectedItem.structure)
-			document.location = '#step2';
-		
+
 		//display elements for choosen structure
 		var filterArr = [
 			{'key' : 'file', 'value' : selectedItem.structure},
@@ -153,11 +153,10 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
 		console.log('step 5 controller');
-		$scope.prevStep = 'step4';
-		$scope.nextStep = 'step6';
-		
 		if(!selectedItem.structure)
 			document.location = '#step2';
+		$scope.prevStep = 'step4';
+		$scope.nextStep = 'step6';
 
 		console.log(db.shelves);
 		$scope.items = db.shelves;
@@ -181,13 +180,38 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 		console.log('step 6 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
-
+		
 		if(typeof selectedItem.item.params.shelves != 'undefined')
 			$scope.prevStep = 'step5';
 		else
 			$scope.prevStep = 'step4';
-		
 		$scope.nextStep = 'step7';
+
+		console.log(db.handles);
+		$scope.items = db.handles;
+		selectedItem.handle = Core.Func.getFirst($scope.items);
+		console.log(selectedItem.handle);
+		
+		$scope.selectItem = function(item)	//get items
+		{
+			//put item in steps
+			selectedItem.handle = item;
+			$scope.selectedItem = selectedItem.handle;
+		}
+		$scope.selectedItem = selectedItem.handle;
+		console.log($scope.selectedItem);
+		
+	}]);
+
+wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
+	function($scope, $routeParams)
+	{
+		console.log('step 7 controller');
+		if(!selectedItem.structure)
+			document.location = '#step2';
+		
+		$scope.prevStep = 'step6';
+		//$scope.nextStep = 'step8';
 		
 		$scope.selectedItem = selectedItem;
 		$scope.fronts = selectedItem.item.params.fronts;

@@ -176,6 +176,10 @@ div.standard-selected-item img{
 	max-height: 270px;
 }
 
+div.standard-selected-item.handles img{
+	margin-top: 80px;
+}
+
 div.front, div.shelve{
 	position: absolute;
 	background-size: cover;
@@ -308,7 +312,13 @@ ul.items-menu li img{
 }
 
 ul.items-menu.accessories li img{
-/*	max-width: 160px;*/
+	max-width: 160px;
+	margin-top: 55px;
+}
+
+ul.items-menu.handles li img{
+	max-width: 160px;
+	margin-top: 85px;
 }
 
 ul.items-menu li span.texture-item{
