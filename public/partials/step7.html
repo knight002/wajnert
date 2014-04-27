@@ -16,8 +16,14 @@
 		<div class="fronts interior">
 			<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
 			<div ng-repeat="front in fronts"
-				 
-				 class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ></div>
+				data-drop="true" ng-model='list1' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}"
+				class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " >
+
+				<img 
+					style="max-width: {{front.w}}px; max-height: {{front.h}}px;"
+					ng-show="list1[$index].file" data-drag="{{list1[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}"
+					alt="" src="../images/accessories/{{list1[$index].file}}" >
+			</div>
 		</div>
 	</div>
 <!--
@@ -27,14 +33,14 @@
 	-->
 </div>
 
-<div class="items-menu-div">
-	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+<div class="items-menu-div accessories clearfix">
+<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >-->
 	<ul class="items-menu accessories">
-		<li ng-repeat="item in items" 
-
-			>
-			<img ng-click="selectItem(item)" alt="" src="../images/accessories/{{item.file}}" >
+		<li ng-repeat="item in accessories" data-drop="true" ng-model="accessories" jqyoui-droppable="{index: {{$index}}}">
+			<img 
+				 data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="accessories" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.file"
+				alt="" src="../images/accessories/{{item.file}}" >
 		</li>
 	</ul>
-	<img class="nav right" alt="" src="../images/right-arrows1.gif">
+<!--	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
 </div>

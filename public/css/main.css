@@ -56,7 +56,9 @@ body{
 }
 
 .section-middle{
-	height: 544px;
+	min-height: 544px;
+	padding-bottom: 10px;
+	background-color: #e7e5e5;
 	background-image: url('../images/gradient-middle.gif');
 	background-repeat: repeat-x;
 }
@@ -286,6 +288,10 @@ div.items-menu-div img.nav.right{
 	float: right;
 }
 
+div.items-menu-div.accessories{
+	height: auto;
+}
+
 ul.items-menu{
 	list-style-type: none;
 	overflow: hidden;
@@ -294,6 +300,12 @@ ul.items-menu{
 	float: left;
 	margin: 0;
 	width: 664px;
+}
+
+div.items-menu-div.accessories ul.items-menu{
+	width: 100%;
+	float: none;
+	overflow: visible;
 }
 
 ul.items-menu li{
@@ -312,8 +324,8 @@ ul.items-menu li img{
 }
 
 ul.items-menu.accessories li img{
-	max-width: 160px;
-	margin-top: 55px;
+	max-width: 100px;
+	max-height: 100px;
 }
 
 ul.items-menu.handles li img{

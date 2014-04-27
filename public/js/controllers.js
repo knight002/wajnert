@@ -30,14 +30,14 @@ wajnertControllers.controller('Step1Ctrl', ['$scope', '$http',
 wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-		console.log('step 2 controller');
+		//console.log('step 2 controller');
 		$scope.prevStep = 'step1';
 		$scope.nextStep = 'step3';
 
 		$scope.colors = Core.Func.getDistinctValues2(db.step2, 'color');
-		console.log($scope.colors);
+		//console.log($scope.colors);
 		selectedItem.color = Core.Func.getFirst($scope.colors);
-		console.log(selectedItem.color);
+		//console.log(selectedItem.color);
 
 		$scope.items = Core.Func.getDistinctValues2(db.step2, 'file');
 		//load the first element
@@ -51,7 +51,7 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 		
 		$scope.selectColor = function(item)
 		{
-			console.log(item);
+			//console.log(item);
 			//put item in steps
 			selectedItem.color = item;
 		}
@@ -63,7 +63,7 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-		console.log('step 3 controller');
+		//console.log('step 3 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
 		$scope.prevStep = 'step2';
@@ -91,7 +91,7 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-		console.log('step 4 controller');
+		//console.log('step 4 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
 
@@ -105,14 +105,14 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 		
 		if(selectedItem.item)
 		{
-			console.log(selectedItem);
+			//console.log(selectedItem);
 			$scope.selectedFile2 = selectedItem.item.file2;
 			$scope.fronts = selectedItem.item.params.fronts;
 		}
 		
 		$scope.selectFront = function(item)
 		{
-			//console.log(item);
+			////console.log(item);
 			if(item.selectedClass == 'selected')
 				item.selectedClass = null;
 			else
@@ -124,24 +124,24 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 		
 		$scope.selectItem = function(item)
 		{
-			console.log(item);
-			console.log(this);
-			console.log($scope.fronts);
+			//console.log(item);
+			//console.log(this);
+			//console.log($scope.fronts);
 			var selected = [];
 			angular.forEach($scope.fronts, function(front, key) {
 				if(front.selectedClass != null && typeof front.selectedClass != 'undefined')
 				{
 					selected[key] = item;
-					console.log(key);
+					//console.log(key);
 					var horizontal = front.w > front.h ? 'horizontal/' : '';
 					front.styles = {
 						'background-image' : "url('../images/textures/"+horizontal+item.file+"')"
 					};
-					console.log(front.background);
+					//console.log(front.background);
 				}
 				front.selectedClass = null;
 			});
-			console.log(selected);
+			//console.log(selected);
 
 			
 		}
@@ -152,16 +152,16 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-		console.log('step 5 controller');
+		//console.log('step 5 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
 		$scope.prevStep = 'step4';
 		$scope.nextStep = 'step6';
 
-		console.log(db.shelves);
+		//console.log(db.shelves);
 		$scope.items = db.shelves;
 		selectedItem.shelve = Core.Func.getFirst($scope.items);
-		console.log(selectedItem.shelve);
+		//console.log(selectedItem.shelve);
 		
 		$scope.selectItem = function(item)	//get items
 		{
@@ -170,14 +170,14 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 			$scope.selectedItem = selectedItem.shelve;
 		}
 		$scope.selectedItem = selectedItem.shelve;
-		console.log($scope.selectedItem);
+		//console.log($scope.selectedItem);
 		
 	}]);
 
 wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-		console.log('step 6 controller');
+		//console.log('step 6 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
 		
@@ -187,10 +187,10 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 			$scope.prevStep = 'step4';
 		$scope.nextStep = 'step7';
 
-		console.log(db.handles);
+		//console.log(db.handles);
 		$scope.items = db.handles;
 		selectedItem.handle = Core.Func.getFirst($scope.items);
-		console.log(selectedItem.handle);
+		//console.log(selectedItem.handle);
 		
 		$scope.selectItem = function(item)	//get items
 		{
@@ -199,14 +199,14 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 			$scope.selectedItem = selectedItem.handle;
 		}
 		$scope.selectedItem = selectedItem.handle;
-		console.log($scope.selectedItem);
+		//console.log($scope.selectedItem);
 		
 	}]);
 
 wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
-		console.log('step 7 controller');
+		//console.log('step 7 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
 		
@@ -215,7 +215,17 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 		
 		$scope.selectedItem = selectedItem;
 		$scope.fronts = selectedItem.item.params.fronts;
-		$scope.items = db.accessories;
+		
+		$scope.accessories = [];
+		angular.forEach(db.accessories, function(val, key) {
+			$scope.accessories.push(val);
+		}); 
+		//console.log($scope.accessories);
+
+		$scope.list1 = [];
+		angular.forEach($scope.fronts, function(val, key) {
+			$scope.list1.push({});
+		});
 		
 		if(typeof selectedItem.item.params.shelves != 'undefined')
 		{
@@ -227,42 +237,77 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 			$scope.shelves = shelves;
 		}
 		
+		$scope.startCallback = function(event, ui, file) {
+			//console.log('You started draggin: ' + file.file);
+			$scope.draggedTitle = file.file;
+		};
+		$scope.stopCallback = function(event, ui) {
+			//console.log('Why did you stop draggin me?');
+		};
+		$scope.dragCallback = function(event, ui) {
+			//console.log('hey, look I`m flying');
+		};
+		$scope.dropCallback = function(event, ui) {
+			//console.log('hey, you dumped me :-(' , $scope.draggedTitle);
+			//console.log($scope.list1);
+			//console.log($scope.accessories);
+		};
+		$scope.overCallback = function(event, ui) {
+			//console.log('Look, I`m over you');
+		};
+		$scope.outCallback = function(event, ui) {
+			//console.log('I`m not, hehe');
+		};
+		
 	}]);
 
 wajnertControllers.controller('DndCtrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
-	{		
-		$scope.selectedItem = selectedItem;
+	{
+//		$scope.selectedItem = selectedItem;
 		$scope.fronts = db.step2[0].params.fronts;
-		$scope.items = db.accessories;
-		$scope.list2 = {};
+		console.log($scope.fronts);
 		
+		$scope.accessories = db.accessories;
+		console.log($scope.accessories);
+		
+		var arr1 = [];
+		angular.forEach($scope.accessories, function(val, key) {
+			arr1.push(val);
+		}); 
+		$scope.accessories = arr1;
+		console.log($scope.accessories);
 
-		$scope.placeholders = [
-			{'items' : [{ 'title': 'Item 1', 'drag': true }, { 'title': 'Item 2', 'drag': true }], 'list' : 'list1'},
-			{'items' : [], 'list' : 'list2'},
-			{'items' : [], 'list' : 'list3'},
-		];
-	console.log($scope.placeholders);
 
-	$scope.list1 = $scope.placeholders[0];
-	
+//  $scope.images = [{'thumb': '1.png'},{'thumb': '2.png'},{'thumb': '3.png'},{'thumb': '4.png'}]
+		$scope.list1 = [];
+		angular.forEach($scope.fronts, function(val, key) {
+			$scope.list1.push({});
+		}); 
+
+		console.log($scope.list1);
+
+
+  $scope.startCallback = function(event, ui, file) {
+    console.log('You started draggin: ' + file.file);
+//    $scope.draggedTitle = file.file;
+  };
+  $scope.stopCallback = function(event, ui) {
+    console.log('Why did you stop draggin me?');
+  };
+  $scope.dragCallback = function(event, ui) {
+    console.log('hey, look I`m flying');
+  };
+  $scope.dropCallback = function(event, ui) {
+//    console.log('hey, you dumped me :-(' , $scope.draggedTitle);
 	console.log($scope.list1);
-
-//  $scope.list1 = [];
-//  $scope.list2 = [];
-//  $scope.list3 = [];
-//  $scope.list4 = [];
-  
-  $scope.list5 = [
-//    { 'title': 'Item 1', 'drag': true },
-//    { 'title': 'Item 2', 'drag': true },
-    { 'title': 'Item 3', 'drag': true },
-    { 'title': 'Item 4', 'drag': true },
-    { 'title': 'Item 5', 'drag': true },
-    { 'title': 'Item 6', 'drag': true },
-    { 'title': 'Item 7', 'drag': true },
-    { 'title': 'Item 8', 'drag': true }
-  ]; 
+	console.log($scope.accessories);
+  };
+  $scope.overCallback = function(event, ui) {
+    console.log('Look, I`m over you');
+  };
+  $scope.outCallback = function(event, ui) {
+    console.log('I`m not, hehe');
+  }; 
 
 	}]);
