@@ -217,7 +217,7 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 		$scope.fronts = selectedItem.item.params.fronts;
 		
 		$scope.accessories = [];
-		angular.forEach(db.accessories, function(val, key) {
+		angular.forEach(db.accessories[selectedItem.color], function(val, key) {
 			$scope.accessories.push(val);
 		}); 
 		//console.log($scope.accessories);
