@@ -222,7 +222,7 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 			document.location = '#step2';
 		
 		$scope.prevStep = 'step6';
-		//$scope.nextStep = 'step8';
+		$scope.nextStep = 'step8';
 		
 		$scope.selectedItem = selectedItem;
 		$scope.fronts = selectedItem.item.params.fronts;
@@ -269,6 +269,37 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 		$scope.outCallback = function(event, ui) {
 			//console.log('I`m not, hehe');
 		};
+		
+	}]);
+
+wajnertControllers.controller('Step8Ctrl', ['$scope', '$routeParams',
+	function($scope, $routeParams)
+	{
+		//console.log('step 8 controller');
+		if(!selectedItem.structure)
+			document.location = '#step2';
+		
+		$scope.prevStep = 'step7';
+		//$scope.nextStep = 'step9';
+		
+		$scope.selectedItem = selectedItem;
+		$scope.fronts = selectedItem.item.params.fronts;
+		
+		$scope.accessories = [];
+		angular.forEach(db.accessories[selectedItem.color], function(val, key) {
+			$scope.accessories.push(val);
+		}); 
+		//console.log($scope.accessories);
+		
+		if(typeof selectedItem.item.params.shelves != 'undefined')
+		{
+			var shelves = selectedItem.item.params.shelves;
+			shelves[0].t = selectedItem.shelve.file;
+			shelves[0].styles = {
+				'background-image' : "url('../images/shelves/front/"+selectedItem.shelve.file+"')"
+			};
+			$scope.shelves = shelves;
+		}
 		
 	}]);
 

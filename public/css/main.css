@@ -192,6 +192,10 @@ div.front, div.shelve{
 	border: 1px solid gray;
 }
 
+div.front.no-borders, div.shelve.no-borders{
+	border: 1px solid transparent;
+}
+
 div.front.selectable{
 	cursor: pointer;
 }

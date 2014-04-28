@@ -1,28 +1,26 @@
-<h2>Twoja konfiguracja. Wybierz dodatki.</h2>
+<h2>Twoja konfiguracja. Podsumowanie.</h2>
 
 <div class="step-nav clearfix">
 	<a href="#{{prevStep}}">
 		<img class="nav left" alt="" src="../images/left-orange1.gif" >
 	</a>
 	<div class="selected-items">
-		<div class="fronts">
+		<div class="fronts exterior">
+			<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
+			<div ng-repeat="front in fronts" class="front no-borders {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles"></div>
+			<div ng-repeat="shelve in shelves" class="shelve no-borders {{shelve.selectedClass}}" ng-click="selectFront(shelve)" style="left: {{shelve.x}}px; top: {{shelve.y}}px; width: {{shelve.w}}px; height: {{shelve.h}}px; " ng-style="shelve.styles"></div>
+		</div>
+		
+		<div class="fronts interior">
 			<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
-			<div ng-repeat="front in fronts"
-				data-drop="true" ng-model='list1' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}"
-				class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " >
-
-				<img 
-					style="max-width: {{front.w}}px; max-height: {{front.h}}px;"
-					ng-show="list1[$index].file" data-drag="{{list1[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}"
-					alt="" src="../images/accessories/{{selectedItem.color}}/{{list1[$index].file}}" >
-			</div>
+<!--			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " >-->
 		</div>
 	</div>
-
+<!--
 	<a href="#{{nextStep}}">
 		<img class="nav right" alt="" src="../images/right-orange1.gif" >
 	</a>
-	
+	-->
 </div>
 
 <div class="items-menu-div clearfix">

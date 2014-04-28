@@ -49,6 +49,10 @@ wajnertApp.config(['$routeProvider',
 				templateUrl: 'partials/step7.html',
 				controller: 'Step7Ctrl'
 			}).
+			when('/step8', {
+				templateUrl: 'partials/step8.html',
+				controller: 'Step8Ctrl'
+			}).
 			when('/dnd', {
 				templateUrl: 'partials/dnd.html',
 				controller: 'DndCtrl'
