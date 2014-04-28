@@ -18,6 +18,17 @@ var selectedItem = {
 	
 };
 
+wajnertControllers.controller('BodyController', ['$scope', '$route',
+	function($scope, $route)
+	{
+//		console.log($route);
+//		console.log($route.current);
+		
+		$scope.headerTemplate = 'partials/header1.html';
+//		$scope.headerTemplate = 'partials/header2.html';
+		$scope.footerTemplate = 'partials/footer1.html';
+	}]);
+
 wajnertControllers.controller('Step1Ctrl', ['$scope', '$http',
 	function($scope, $http)
 	{

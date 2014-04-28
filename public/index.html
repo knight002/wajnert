@@ -19,38 +19,30 @@ and open the template in the editor.
 		<script src="js/angular-route.min.js"></script>
 		<script src="js/angular-dragdrop.min.js"></script>
 		<script src="js/func.js"></script>
-		<script src="js/bodyController.js"></script>
 		<script src="js/app.js"></script>
+
 		<script src="js/controllers.js"></script>
+		
+<!--		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">-->
 	</head>
+
 	<body ng-controller="BodyController">
+
 		<div class="section-outer section-top">
 			<div class="section-inner section-top">
-				
+				<div ng-include="headerTemplate"></div>
 			</div>
 		</div>
 		<div class="section-outer section-middle">
 			<div class="section-inner section-middle centerize" ng-view>
-<!--
-				<h2>Wykreuj swoje wnętrze z kolekcją MULTI+<br>Baw się, projektuj lub korzystaj z gotowych rozwiązań</h2>
-				<img alt="" src="images/img1.jpg" >
-				<ul class="menu2 clearfix">
-					<li><img alt="" src="images/kretor-komod.jpg" ></li>
-					<li><img alt="" src="images/kreator-szaf.jpg" ></li>
-					<li><img alt="" src="images/kreator-lozek.jpg" ></li>
-				</ul>
 
-				<ul class="menu2 clearfix">
-					<li><img alt="" src="images/ico-www.gif" ></li>
-					<li><img alt="" src="images/ico-pdf.gif" ></li>
-					<li><img alt="" src="images/ico-play.gif" ></li>
-				</ul>
--->
 			</div>
 		</div>
 		<div class="section-outer section-bottom">
 			<div class="section-inner section-bottom">
-				
+				<div ng-include="footerTemplate"></div>
 			</div>
 		</div>
 	</body>
