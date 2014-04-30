@@ -4,6 +4,9 @@
 	<a href="#{{prevStep}}">
 		<img class="nav left" alt="" src="../images/left-orange1.gif" >
 	</a>
+	<a href="#{{nextStep}}">
+		<img class="nav right" alt="" src="../images/right-orange1.gif" >
+	</a>
 	<div class="selected-items">
 		<div class="fronts">
 			<img alt="" src="../images/step3/{{color}}/{{selectedFile2}}" >
@@ -11,18 +14,14 @@
 
 		</div>
 	</div>
-
-	<a href="#{{nextStep}}">
-		<img class="nav right" alt="" src="../images/right-orange1.gif" >
-	</a>
 </div>
 
-<div class="items-menu-div">
-	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
-	<ul class="items-menu">
-		<li ng-repeat="item in items">
-			<img ng-click="selectItem(item)" alt="" src="../images/step3/{{color}}/{{item.file2}}" >
+<div class="items-menu-div clearfix">
+<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >-->
+	<flex-slider class="items-menu step3" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
+		<li style="margin: 7px;">
+			<img alt="" ng-click="selectItem(item)" ng-src="../images/step3/{{color}}/{{item.file2}}">
 		</li>
-	</ul>
-	<img class="nav right" alt="" src="../images/right-arrows1.gif">
+	</flex-slider>
+<!--	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
 </div>

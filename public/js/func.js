@@ -35,14 +35,20 @@ Core.Func = {
 	
 	filterElementsByKey : function(arr, keys)
 	{
-		var arr2 = {};
+		var arr2 = [];
+		
 		keys.forEach(function(value1, key1){
+			var temp = [];
 			arr.forEach(function(value2, key2){
 				if(value2[value1.key] === value1.value)
 				{
+//					console.log(value1.key + ' === ' +value1.value);
 					arr2[key2] = value2;
+					temp[key2] = value2;
 				}
 			});
+//			console.log(temp);
+			arr2 = temp;
 
 		});
 		return arr2;

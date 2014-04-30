@@ -21,9 +21,6 @@ var selectedItem = {
 wajnertControllers.controller('BodyController', ['$scope', '$route',
 	function($scope, $route)
 	{
-//		console.log($route);
-//		console.log($route.current);
-		
 		$scope.headerTemplate = 'partials/header1.html';
 //		$scope.headerTemplate = 'partials/header2.html';
 		$scope.footerTemplate = 'partials/footer1.html';
@@ -32,9 +29,6 @@ wajnertControllers.controller('BodyController', ['$scope', '$route',
 wajnertControllers.controller('Step1Ctrl', ['$scope', '$http',
 	function($scope, $http)
 	{
-//		$http.get('phones/phones.json').success(function(data) {
-//			$scope.phones = data;
-//		});
 
 	}]);
 
@@ -45,14 +39,22 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 		$scope.prevStep = 'step1';
 		$scope.nextStep = 'step3';
 
-		$scope.colors = Core.Func.getDistinctValues2(db.step2, 'color');
+		var colors = Core.Func.getDistinctValues2(db.step2, 'color');
+		$scope.colors = [];
+		angular.forEach(colors, function(val, key) {
+			$scope.colors.push({'color' : val, 'style' : {'background-color' : '#'+val}});
+		});
 		//console.log($scope.colors);
-		selectedItem.color = Core.Func.getFirst($scope.colors);
+		selectedItem.color = Core.Func.getFirst(colors);
 		//console.log(selectedItem.color);
 
-		$scope.items = Core.Func.getDistinctValues2(db.step2, 'file');
+		var items2 = Core.Func.getDistinctValues2(db.step2, 'file');
 		//load the first element
-		selectedItem.structure = Core.Func.getFirst($scope.items);
+		selectedItem.structure = Core.Func.getFirst(items2);
+		$scope.items = [];
+		angular.forEach(items2, function(val, key) {
+			$scope.items.push(val);
+		});
 		
 		$scope.selectItem = function(item)
 		{
@@ -62,12 +64,10 @@ wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 		
 		$scope.selectColor = function(item)
 		{
-			//console.log(item);
-			//put item in steps
 			selectedItem.color = item;
 		}
 		
-		$scope.selectedFile = selectedItem;
+		$scope.selectedItem = selectedItem;
 
 	}]);
 
@@ -80,13 +80,21 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 		$scope.prevStep = 'step2';
 		$scope.nextStep = 'step4';
 		$scope.color = selectedItem.color;
+		
+		//console.log(selectedItem);
 
 		//display elements for choosen structure
 		var filterArr = [
 			{'key' : 'file', 'value' : selectedItem.structure},
 			{'key' : 'color', 'value' : selectedItem.color}
 		];
-		$scope.items = Core.Func.filterElementsByKey(db.step2, filterArr);
+		var items2 = Core.Func.filterElementsByKey(db.step2, filterArr);
+		$scope.items = [];
+		angular.forEach(items2, function(val, key) {
+			$scope.items.push(val);
+		});
+//		$scope.items = arr1;
+		//console.log($scope.items);
 		selectedItem.item = $scope.items[0];
 		
 		$scope.selectItem = function(item)	//get items
@@ -170,8 +178,14 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 		$scope.nextStep = 'step6';
 
 		//console.log(db.shelves);
-		$scope.items = db.shelves;
-		selectedItem.shelve = Core.Func.getFirst($scope.items);
+		//$scope.items = db.shelves;
+		var items2 = db.shelves;
+		selectedItem.shelve = Core.Func.getFirst(items2);
+
+		$scope.items = [];
+		angular.forEach(items2, function(val, key) {
+			$scope.items.push(val);
+		});
 		//console.log(selectedItem.shelve);
 		
 		$scope.selectItem = function(item)	//get items

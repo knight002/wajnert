@@ -4,27 +4,37 @@
 	<a href="#{{prevStep}}">
 		<img class="nav left" alt="" src="../images/left-orange1.gif" >
 	</a>
-	<div class="selected-items">
-		<div class="wireframe">
-			<img alt="" src="../images/step2/{{selectedFile.structure}}" >
-		</div>
-		<div class="color-selector">
-			<span>Wybierz kolor korpusu</span>
-			<ul class="color-menu">				
-				<li ng-repeat="color in colors"><span ng-click="selectColor(color)" ng-style="color.style" style="background-color: #{{color}}"></span></li>
-			</ul>
-		</div>
-	</div>
-
 	<a href="#{{nextStep}}">
 		<img class="nav right" alt="" src="../images/right-orange1.gif" >
 	</a>
+	<div class="selected-items">
+		<ul class="selected-items clearfix">
+			<li><img alt="" src="../images/step2/a/{{selectedItem.structure}}" ></li>
+			<li><img alt="" src="../images/step2/b/{{selectedItem.structure}}" ></li>
+		</ul>
+<!--		<div class="wireframe">
+			<img alt="" src="../images/step2/{{selectedFile.structure}}" >
+		</div>-->
+		<div class="color-selector">
+			<span>Wybierz kolor korpusu</span>
+			<ul class="color-menu">				
+				<li ng-repeat="color in colors">
+					<span ng-click="selectColor(color.color)" ng-class="(color.color==selectedItem.color) ? 'active' : ''" ng-style="color.style"></span>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
 
 <div class="items-menu-div clearfix">
-	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
 	<ul class="items-menu">
 		<li ng-repeat="item in items"><img ng-click="selectItem(item)" alt="" src="../images/step2/h160/{{item}}" ></li>
 	</ul>
-	<img class="nav right" alt="" src="../images/right-arrows1.gif">
+	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
+	<flex-slider class="items-menu step2" slide="item in items" animation="slide" animation-loop="false" item-width="160" item-margin="12px">
+		<li>
+			<img ng-click="selectItem(item)" alt="" src="../images/step2/h160/{{item}}" >
+		</li>
+	</flex-slider>
 </div>

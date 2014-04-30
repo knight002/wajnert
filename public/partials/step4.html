@@ -4,16 +4,15 @@
 	<a href="#{{prevStep}}">
 		<img class="nav left" alt="" src="../images/left-orange1.gif" >
 	</a>
+	<a href="#{{nextStep}}">
+		<img class="nav right" alt="" src="../images/right-orange1.gif" >
+	</a>
 	<div class="selected-items">
 		<div class="fronts">
 			<img alt="" src="../images/step3/{{color}}/{{selectedFile2}}" >
 			<div ng-repeat="front in fronts" class="front selectable {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles"></div>
 		</div>
 	</div>
-
-	<a href="#{{nextStep}}">
-		<img class="nav right" alt="" src="../images/right-orange1.gif" >
-	</a>
 </div>
 
 <div class="items-menu-div">
