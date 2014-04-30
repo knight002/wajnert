@@ -13,9 +13,10 @@ $(document).ready(function(){
 /* App Module */
 
 var wajnertApp = angular.module('wajnertApp', [
-  'ngRoute',
-  'wajnertControllers',
-  'ngDragDrop'
+	'ngRoute',
+	'wajnertControllers',
+	'ngDragDrop',
+	'angular-flexslider'
 ]);
 
 wajnertApp.config(['$routeProvider',

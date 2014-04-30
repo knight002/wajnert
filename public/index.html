@@ -11,16 +11,18 @@ and open the template in the editor.
 		<meta name="viewport" content="width=device-width">
 		<link href="css/normalize.min.css" media="screen" rel="stylesheet" type="text/css" >
 		<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" >
+		<link href="css/flexslider.css" media="screen" rel="stylesheet" type="text/css" >
 		<script src="js/data.js"></script>
 		<script src="default/index/data"></script>
 		<script src="js/jquery-1.11.0.min.js"></script>
 		<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+		<script src="js/jquery.flexslider-min.js"></script>
 		<script src="js/angular.min.js"></script>
+		<script src="js/angular-flexslider.js"></script>
 		<script src="js/angular-route.min.js"></script>
 		<script src="js/angular-dragdrop.min.js"></script>
 		<script src="js/func.js"></script>
 		<script src="js/app.js"></script>
-
 		<script src="js/controllers.js"></script>
 		
 <!--		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -30,17 +32,17 @@ and open the template in the editor.
 
 	<body ng-controller="BodyController">
 
-		<div class="section-outer section-top">
+		<div class="section-outer ">
 			<div class="section-inner section-top">
 				<div ng-include="headerTemplate"></div>
 			</div>
 		</div>
-		<div class="section-outer section-middle">
+		<div class="section-outer ">
 			<div class="section-inner section-middle centerize" ng-view>
 
 			</div>
 		</div>
-		<div class="section-outer section-bottom">
+		<div class="section-outer ">
 			<div class="section-inner section-bottom">
 				<div ng-include="footerTemplate"></div>
 			</div>
