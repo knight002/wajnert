@@ -1,4 +1,4 @@
-<h2>Twoja konfiguracja. Wybierz kolory frontów.</h2>
+<h2>Wybierz kolory frontów.</h2>
 
 <div class="step-nav clearfix">
 	<a href="#{{prevStep}}">
@@ -16,9 +16,14 @@
 </div>
 
 <div class="items-menu-div">
-	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
 	<ul class="items-menu">
 		<li ng-repeat="item in items"><span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span></li>
 	</ul>
-	<img class="nav right" alt="" src="../images/right-arrows1.gif">
+	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
+	<flex-slider class="items-menu step4" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
+		<li style="margin: 7px;">
+			<span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span>
+		</li>
+	</flex-slider>
 </div>
