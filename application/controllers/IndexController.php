@@ -1,5 +1,60 @@
 <?php
 
+/**
+
+types: [front dlugi, front krotki, czolo dlugie, czolo krotkie, polka, uchwyt, ]
+
+
+
+positions(id, x, y, w, h, type, handles_positions)
+
+textures(id, type, texture, allow_outside_placeholder, allow_on_placeholder, allow_inside_placeholder )
+
+items(id, outside_positions, on_positions, inside_positions, name, color, [scheme file], [outside file], [inside file])
+
+
+podzial:
+pozycje prontow
+pozycje uchwytow
+pozycje akcesoriow
+
+
+
+4:
+a, b, c, d
+
+lista pozycji dla danego typu i przypisanej do danej szafy
+lista tekstur danego typu
+
+type - front dlugie
+id - id sprecyzowane w szafie
+textures(type, id)
+
+
+ */
+
+class Data{
+	public $rawItem = array(
+		'id'	=> 1,
+		'name'	=> 'szafa 200 F1',
+		'color'	=> '000000',
+		'file1'	=> 'sheme file 1.gif',
+		'file2'	=> 'outside file 1.gif',
+		'file3'	=> 'inside file 1.gif',
+
+		//positions:
+		'outsides'	=> array(
+			1,2,3,4
+		),
+		'onsides'	=> array(
+			5,6,7
+		),
+		'insides'	=> array(
+			8,9
+		),
+	);
+}
+
 class IndexController extends Zend_Controller_Action
 {
 
@@ -62,6 +117,7 @@ class IndexController extends Zend_Controller_Action
 					$arr[$k]['id'] = $k;
 					$arr[$k]['drag'] = true;
 					$arr[$k]['file'] = $v;
+					$arr[$k]['name'] = $exp[0];
 				}
 			}
 			
@@ -111,6 +167,15 @@ class IndexController extends Zend_Controller_Action
 					'w'	=> 62,
 					'h'	=> 270,
 					't'	=> null,
+					'type'	=> 'VL',
+					'handles'	=> array(
+						array(
+							'x'	=> 62/2-31/2+0,
+							'y'	=> 270/2-10/2+0,
+							'w'	=> 31,
+							'h'	=> 10,
+						)
+					),
 				),
 				array(
 					'x'	=> 64,
@@ -118,6 +183,14 @@ class IndexController extends Zend_Controller_Action
 					'w'	=> 61,
 					'h'	=> 270,
 					't'	=> null,
+					'handles'	=> array(
+						array(
+							'x'	=> 62/2-31/2+64,
+							'y'	=> 270/2-10/2+0,
+							'w'	=> 31,
+							'h'	=> 10,
+						)
+					),
 				),
 				array(
 					'x'	=> 127,
@@ -125,6 +198,14 @@ class IndexController extends Zend_Controller_Action
 					'w'	=> 61,
 					'h'	=> 270,
 					't'	=> null,
+					'handles'	=> array(
+						array(
+							'x'	=> 62/2-31/2+127,
+							'y'	=> 270/2-10/2+0,
+							'w'	=> 31,
+							'h'	=> 10,
+						)
+					),
 				),
 				array(
 					'x'	=> 190,
@@ -132,6 +213,14 @@ class IndexController extends Zend_Controller_Action
 					'w'	=> 62,
 					'h'	=> 270,
 					't'	=> null,
+					'handles'	=> array(
+						array(
+							'x'	=> 62/2-31/2+190,
+							'y'	=> 270/2-10/2+0,
+							'w'	=> 31,
+							'h'	=> 10,
+						)
+					),
 				),
 			),
 			'acc'		=> array(

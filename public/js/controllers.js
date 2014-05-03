@@ -119,26 +119,20 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 			$scope.nextStep = 'step5';
 		else
 			$scope.nextStep = 'step6';
-		$scope.color = selectedItem.color;
-		$scope.items = db.textures;
-		
-		if(selectedItem.item)
-		{
-			//console.log(selectedItem);
-			$scope.selectedFile2 = selectedItem.item.file2;
-			$scope.fronts = selectedItem.item.params.fronts;
-		}
+		$scope.selectedItem = selectedItem;
+		$scope.fronts = selectedItem.item.params.fronts;
+		var items = db.textures;
+		$scope.items = [];
+		angular.forEach(items, function(val, key) {
+			$scope.items.push(val);
+		});
 		
 		$scope.selectFront = function(item)
 		{
-			////console.log(item);
 			if(item.selectedClass == 'selected')
 				item.selectedClass = null;
 			else
-				item.selectedClass = 'selected';
-			//angular.element(this).toggleClass('selected');
-			//$(item).toggleClass('selected');
-			
+				item.selectedClass = 'selected';			
 		}
 		
 		$scope.selectItem = function(item)
@@ -156,6 +150,7 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 					front.styles = {
 						'background-image' : "url('../images/textures/"+horizontal+item.file+"')"
 					};
+					front.selectedBackgroundImage = horizontal+item.file;
 					//console.log(front.background);
 				}
 				front.selectedClass = null;
@@ -179,11 +174,11 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 
 		//console.log(db.shelves);
 		//$scope.items = db.shelves;
-		var items2 = db.shelves;
-		selectedItem.shelve = Core.Func.getFirst(items2);
+		var items = db.shelves;
+		selectedItem.shelve = Core.Func.getFirst(items);
 
 		$scope.items = [];
-		angular.forEach(items2, function(val, key) {
+		angular.forEach(items, function(val, key) {
 			$scope.items.push(val);
 		});
 		//console.log(selectedItem.shelve);
@@ -211,20 +206,80 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 		else
 			$scope.prevStep = 'step4';
 		$scope.nextStep = 'step7';
-
-		//console.log(db.handles);
-		$scope.items = db.handles;
-		selectedItem.handle = Core.Func.getFirst($scope.items);
-		//console.log(selectedItem.handle);
+		$scope.selectedItem = selectedItem;
 		
-		$scope.selectItem = function(item)	//get items
+		//FRONTS
+		var fronts = selectedItem.item.params.fronts;
+		$scope.fronts = [];
+		angular.forEach(fronts, function(val, key) {
+			var val1 = val;
+			val1.styles = {
+				'left' : val.x + 'px',
+				'top' : val.y + 'px',
+				'width' : val.w + 'px',
+				'height' : val.h + 'px',
+				'background-image' : "url('../images/textures/"+val.selectedBackgroundImage+"')"
+			};
+			$scope.fronts.push(val1);
+		});
+		console.log($scope.fronts);
+		
+		//HANDLES
+		$scope.handles = [];
+		angular.forEach(fronts, function(front, key) {
+			console.log(front.handles);
+			angular.forEach(front.handles, function(val, key) {
+	//			var val2 = val;
+				var val2 = {};
+				val2.styles = {
+					'left' : val.x + 'px',
+					'top' : val.y + 'px',
+					'width' : val.w + 'px',
+					'height' : val.h + 'px',
+	//				'background-image' : "url('../images/textures/"+val.selectedBackgroundImage+"')"
+				};
+				$scope.handles.push(val2);
+			});
+		});
+		console.log($scope.handles);
+
+		//ITEMS
+		var items = db.handles;
+		$scope.items = [];
+		angular.forEach(items, function(val, key) {
+			$scope.items.push(val);
+		});
+		selectedItem.handle = Core.Func.getFirst($scope.items);
+		//console.log($scope.items);
+
+		$scope.selectHandle = function(item)
 		{
-			//put item in steps
-			selectedItem.handle = item;
-			$scope.selectedItem = selectedItem.handle;
+			if(item.selected == true)
+				item.selected = null;
+			else
+				item.selected = true;
 		}
-		$scope.selectedItem = selectedItem.handle;
 		//console.log($scope.selectedItem);
+		
+		$scope.selectItem = function(item)
+		{
+			//console.log(item);
+			//console.log(this);
+			//console.log($scope.handles);
+			var selected = [];
+			angular.forEach($scope.handles, function(handle, key) {
+				if(handle.selected != null && typeof handle.selected != 'undefined')
+				{
+					selected[key] = item;
+					//console.log(key);
+					handle.styles['background-image'] = "url('../images/handles/"+item.file+"')";
+				}
+				handle.selected = null;
+			});
+			//console.log(selected);
+
+			
+		}
 		
 	}]);
 

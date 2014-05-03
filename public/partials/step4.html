@@ -9,8 +9,10 @@
 	</a>
 	<div class="selected-items">
 		<div class="fronts">
-			<img alt="" src="../images/step3/{{color}}/{{selectedFile2}}" >
-			<div ng-repeat="front in fronts" class="front selectable {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles"></div>
+			<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
+			<div ng-repeat="front in fronts" class="front selectable {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles">
+				&nbsp;
+			</div>
 		</div>
 	</div>
 </div>
@@ -21,9 +23,12 @@
 		<li ng-repeat="item in items"><span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span></li>
 	</ul>
 	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
-	<flex-slider class="items-menu step4" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
-		<li style="margin: 7px;">
-			<span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span>
+	<flex-slider class="items-menu step4" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="62" >
+		<li>
+			<span class="texture-block">
+				<span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span>
+				<span class="texture-name">{{item.name}}</span>
+			</span>
 		</li>
 	</flex-slider>
 </div>

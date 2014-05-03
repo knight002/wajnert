@@ -150,6 +150,7 @@ div.fronts{
 	
 	/* TODO - different sizes of wardrobes*/
 	width: 254px;
+	height: 270px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -166,6 +167,10 @@ div.fronts.interior{
 	min-height: 270px;
 	margin-left: 0px;
 	margin-right: 100px;
+}
+
+div.fronts img{
+	border: 1px solid lightgray;
 }
 
 div.wireframe{
@@ -189,7 +194,7 @@ div.standard-selected-item.handles img{
 	margin-top: 80px;
 }
 
-div.front, div.shelve{
+div.front, div.shelve, div.handle{
 	position: absolute;
 	background-size: cover;
 	background-repeat: repeat;
@@ -197,19 +202,19 @@ div.front, div.shelve{
 	border: 1px solid gray;
 }
 
-div.front.no-borders, div.shelve.no-borders{
+div.front.no-borders, div.shelve.no-borders, div.handle.no-borders{
 	border: 1px solid transparent;
 }
 
-div.front.selectable{
+div.front.selectable, div.handle.selectable{
 	cursor: pointer;
 }
 
-div.front.selectable:hover{
+div.front.selectable:hover, div.handle.selectable:hover{
 	border: 1px solid #ff9933;
 }
 
-div.front.selected{
+div.front.selected, div.handle.selected{
 	border: 1px solid lightgreen;
 	background-color: lightgreen;
 	opacity: 0.3;
@@ -319,44 +324,63 @@ div.items-menu-div.accessories ul.items-menu{
 	overflow: visible;
 }
 
-ul.items-menu li{
+.items-menu li{
 	
 }
 
-ul.items-menu li a{
+.items-menu li a{
 	
 }
 
-ul.items-menu li img{
+.items-menu li img{
 	float: left;
 	margin: 12px;
 	max-height: 160px;
 	cursor: pointer;
 }
 
-ul.items-menu.accessories li img{
+.items-menu.accessories li img{
 /*	max-width: 100px;*/
 	max-height: 160px;
 }
 
-ul.items-menu.handles li img{
+.items-menu.handles li img{
 	max-width: 160px;
 	margin-top: 85px;
 }
 
-ul.items-menu li span.texture-item{
+.items-menu li span.texture-block{
+	width: 49px;
+	height: 126px;
+	height: 158px;
+	float: left;
+	margin: 12px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.items-menu li span.texture-item{
+	display: block;
 	width: 47px;
 	height: 126px;
 	height: 158px;
+	height: 120px;
 	border: 2px solid #d8d7d7;
-	float: left;
-	margin: 12px;
+/*	float: left;*/
+/*	margin: 12px;*/
 	cursor: pointer;
 	background-repeat: repeat;
 	background-size: 100%;
 }
 
-ul.items-menu li span.texture-item:hover, ul.items-menu li span.texture-item.active{
+.items-menu li span.texture-name{
+	color: #666666;
+	font-size: 14px;
+	display: block;
+	text-align: center;
+}
+
+.items-menu li span.texture-item:hover, .items-menu li span.texture-item.active{
 	border: 2px solid #ff9933;
 }
 
@@ -405,6 +429,10 @@ div.items-menu ul li img{
 
 .flexslider .slides img{
 	width: auto;
+}
+
+.items-menu.step3 .flexslider .slides img{
+	border: 1px solid lightgray;
 }
 
 /* footer */
