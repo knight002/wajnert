@@ -222,12 +222,12 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 			};
 			$scope.fronts.push(val1);
 		});
-		console.log($scope.fronts);
+		//console.log($scope.fronts);
 		
 		//HANDLES
 		$scope.handles = [];
 		angular.forEach(fronts, function(front, key) {
-			console.log(front.handles);
+			//console.log(front.handles);
 			angular.forEach(front.handles, function(val, key) {
 	//			var val2 = val;
 				var val2 = {};
@@ -241,7 +241,24 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 				$scope.handles.push(val2);
 			});
 		});
-		console.log($scope.handles);
+		//console.log($scope.handles);
+		
+		//SHELVES
+		if(typeof selectedItem.item.params.shelves != 'undefined')
+		{
+			//console.log(selectedItem.shelve);
+			var shelves = selectedItem.item.params.shelves;
+			shelves[0].t = selectedItem.shelve.file;
+			shelves[0].styles = {
+				'left' : shelves[0].x+'px',
+				'top' : shelves[0].y+'px',
+				'width' : shelves[0].w+'px',
+				'height' : shelves[0].h+'px',
+				'background-image' : "url('../images/shelves/front/"+selectedItem.shelve.file+"')"
+			};
+			$scope.shelves = shelves;
+			//console.log($scope.shelves);
+		}
 
 		//ITEMS
 		var items = db.handles;

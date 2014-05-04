@@ -11,6 +11,7 @@
 		<div class="fronts">
 			<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
 			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-style="front.styles"></div>
+			<div ng-repeat="shelve in shelves" class="shelve no-borders" ng-style="shelve.styles"></div>
 			<div ng-repeat="handle in handles" class="handle selectable" ng-class="(handle.selected==true) ? 'selected' : ''" ng-click="selectHandle(handle)" ng-style="handle.styles"></div>
 		</div>
 	</div>
