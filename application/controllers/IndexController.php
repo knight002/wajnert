@@ -443,6 +443,45 @@ class IndexController extends Zend_Controller_Action
 			),
 		);
 		
+		$wardrobeParams6 = array(
+			'fronts'	=> array(
+				$A1MN, $B1LN, $C1LN, $D1MN,
+				$A6SN, $D6SN,
+				$A7SN, $D7SN,
+				$A8SN, $D8SN,
+				$A9SN, $D9SN,
+			),
+			'acc'		=> array(
+				
+			),
+		);
+		
+		$wardrobeParams7 = array(
+			'fronts'	=> array(
+				$A1MN, $B1MN, $C1MN, $D1MN,
+				$A6SN, $B6SN, $C6SN, $D6SN, 
+				$A7SN, $B7SN, $C7SN, $D7SN, 
+				$A8SN, $B8SN, $C8SN, $D8SN, 
+				$A9SN, $B9SN, $C9SN, $D9SN, 
+			),
+			'acc'		=> array(
+				
+			),
+		);
+		
+		$wardrobeParams8 = array(
+			'fronts'	=> array(
+				$A1LN, $B1MN, $C1MN, $D1LN,
+				$B6SN, $C6SN, 
+				$B7SN, $C7SN, 
+				$B8SN, $C8SN, 
+				$B9SN, $C9SN, 
+			),
+			'acc'		=> array(
+				
+			),
+		);
+		
 		$bodies = array(
 			array(
 				'id'		=> 1,
@@ -499,6 +538,28 @@ class IndexController extends Zend_Controller_Action
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams5,
 			),
+			array(
+				'id'		=> 6,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F6',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F6_h270.gif',
+				'interior'	=> 'SZF.200 Kx.jpg',
+				'color'		=> '000000',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams6,
+			),
+			array(
+				'id'		=> 7,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F7',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F7_h270.gif',
+				'interior'	=> 'SZF.200 Kx.jpg',
+				'color'		=> '000000',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams7,
+			),
 			
 			array(
 				'id'		=> 11,
@@ -554,6 +615,28 @@ class IndexController extends Zend_Controller_Action
 				'color'		=> 'ffffff',
 				'type'		=> self::WARDROBE,
 				'params'	=> $wardrobeParams5,
+			),
+			array(
+				'id'		=> 16,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F6',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F6_h270.gif',
+				'interior'	=> 'SZF.200 Kx.jpg',
+				'color'		=> 'ffffff',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams6,
+			),
+			array(
+				'id'		=> 17,
+				'parent'	=> 1,
+				'name'		=> 'Szafa 200 F7',
+				'file'		=> 'SZF-200.gif',
+				'file2'		=> 'F7_h270.gif',
+				'interior'	=> 'SZF.200 Kx.jpg',
+				'color'		=> 'ffffff',
+				'type'		=> self::WARDROBE,
+				'params'	=> $wardrobeParams7,
 			),
 			
 //			array(	//SOME OTHER ELEMENT
