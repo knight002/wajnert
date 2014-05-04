@@ -156,72 +156,219 @@ class IndexController extends Zend_Controller_Action
 	
 	private function getBodies()
 	{
+		$A1LN = array(
+			'x'	=> 0,
+			'y'	=> 0,
+			'w'	=> 62,
+			'h'	=> 270,
+			't'	=> null,
+		);
+		
+		$B1LN = array(
+			'x'	=> 64,
+			'y'	=> 0,
+			'w'	=> 61,
+			'h'	=> 270,
+			't'	=> null,
+		);
+		
+		$C1LN = array(
+			'x'	=> 127,
+			'y'	=> 0,
+			'w'	=> 61,
+			'h'	=> 270,
+			't'	=> null,
+		);
+		
+		$D1LN = array(
+			'x'	=> 190,
+			'y'	=> 0,
+			'w'	=> 62,
+			'h'	=> 270,
+			't'	=> null,
+		);
+		
+		$A1MN = array(
+			'x'	=> 0,
+			'y'	=> 0,
+			'w'	=> 62,
+			'h'	=> 153,
+			't'	=> null,
+		);
+		$B1MN = array(
+			'x'	=> 64,
+			'y'	=> 0,
+			'w'	=> 61,
+			'h'	=> 153,
+			't'	=> null,
+		);
+		$C1MN = array(
+			'x'	=> 127,
+			'y'	=> 0,
+			'w'	=> 61,
+			'h'	=> 153,
+			't'	=> null,
+		);
+		$D1MN = array(
+			'x'	=> 190,
+			'y'	=> 0,
+			'w'	=> 62,
+			'h'	=> 153,
+			't'	=> null,
+		);
+				
+		$A6SN = array(
+			'x'	=> 0,
+			'y'	=> 155,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B6SN = array(
+			'x'	=> 64,
+			'y'	=> 155,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$C6SN = array(
+			'x'	=> 127,
+			'y'	=> 155,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$D6SN = array(
+			'x'	=> 190,
+			'y'	=> 155,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		
+		$A7SN = array(
+			'x'	=> 0,
+			'y'	=> 184,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B7SN = array(
+			'x'	=> 64,
+			'y'	=> 184,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$C7SN = array(
+			'x'	=> 127,
+			'y'	=> 184,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$D7SN = array(
+			'x'	=> 190,
+			'y'	=> 184,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		
+		$A8SN = array(
+			'x'	=> 0,
+			'y'	=> 213,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B8SN = array(
+			'x'	=> 64,
+			'y'	=> 213,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$C8SN = array(
+			'x'	=> 127,
+			'y'	=> 213,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$D8SN = array(
+			'x'	=> 190,
+			'y'	=> 213,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		
+		$A9SN = array(
+			'x'	=> 0,
+			'y'	=> 242,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B9SN = array(
+			'x'	=> 64,
+			'y'	=> 242,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$C9SN = array(
+			'x'	=> 127,
+			'y'	=> 242,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$D9SN = array(
+			'x'	=> 190,
+			'y'	=> 242,
+			'w'	=> 62,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		
+		
+		$B6SW = array(
+			'x'	=> 64,
+			'y'	=> 155,
+			'w'	=> 124,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B7SW = array(
+			'x'	=> 64,
+			'y'	=> 184,
+			'w'	=> 124,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B8SW = array(
+			'x'	=> 64,
+			'y'	=> 213,
+			'w'	=> 124,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		$B9SW = array(
+			'x'	=> 64,
+			'y'	=> 242,
+			'w'	=> 124,
+			'h'	=> 27,
+			't'	=> null,
+		);
+		
 		//types: wardrobe, bed, commode
 		
 		// action body
 		$wardrobeParams = array(
 			'fronts'	=> array(
-				array(
-					'x'	=> 0,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 270,
-					't'	=> null,
-					'type'	=> 'VL',
-					'handles'	=> array(
-						array(
-							'x'	=> 62/2-31/2+0,
-							'y'	=> 270/2-10/2+0,
-							'w'	=> 31,
-							'h'	=> 10,
-						)
-					),
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 270,
-					't'	=> null,
-					'handles'	=> array(
-						array(
-							'x'	=> 62/2-31/2+64,
-							'y'	=> 270/2-10/2+0,
-							'w'	=> 31,
-							'h'	=> 10,
-						)
-					),
-				),
-				array(
-					'x'	=> 127,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 270,
-					't'	=> null,
-					'handles'	=> array(
-						array(
-							'x'	=> 62/2-31/2+127,
-							'y'	=> 270/2-10/2+0,
-							'w'	=> 31,
-							'h'	=> 10,
-						)
-					),
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 270,
-					't'	=> null,
-					'handles'	=> array(
-						array(
-							'x'	=> 62/2-31/2+190,
-							'y'	=> 270/2-10/2+0,
-							'w'	=> 31,
-							'h'	=> 10,
-						)
-					),
-				),
+				$A1LN, $B1LN, $C1LN, $D1LN,
 			),
 			'acc'		=> array(
 				
@@ -230,108 +377,11 @@ class IndexController extends Zend_Controller_Action
 		
 		$wardrobeParams2 = array(
 			'fronts'	=> array(
-				array(
-					'x'	=> 0,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 127,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 155,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 155,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 184,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 184,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 213,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 213,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 213,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 242,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 242,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 242,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
+				$A1MN, $B1MN, $C1MN, $D1MN,
+				$A6SN, $D6SN,
+				$A7SN, $D7SN,
+				$A8SN, $B8SW, $D8SN,
+				$A9SN, $B9SW, $D9SN,
 			),
 			'acc'		=> array(
 				
@@ -349,122 +399,11 @@ class IndexController extends Zend_Controller_Action
 		
 		$wardrobeParams3 = array(
 			'fronts'	=> array(
-				array(
-					'x'	=> 0,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 127,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 155,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 155,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 155,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 184,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 184,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 184,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 213,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 213,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 213,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 0,
-					'y'	=> 242,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 242,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 242,
-					'w'	=> 62,
-					'h'	=> 27,
-					't'	=> null,
-				),
+				$A1MN, $B1MN, $C1MN, $D1MN,
+				$A6SN, $B6SW, $D6SN,
+				$A7SN, $B7SW, $D7SN,
+				$A8SN, $B8SW, $D8SN,
+				$A9SN, $B9SW, $D9SN,
 			),
 			'acc'		=> array(
 				
@@ -473,66 +412,11 @@ class IndexController extends Zend_Controller_Action
 		
 		$wardrobeParams4 = array(
 			'fronts'	=> array(
-				array(
-					'x'	=> 0,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 270,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 127,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 270,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 64,
-					'y'	=> 155,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 64,
-					'y'	=> 184,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 64,
-					'y'	=> 213,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 64,
-					'y'	=> 242,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
+				$A1LN, $B1MN, $C1MN, $D1LN,
+				$B6SW,
+				$B7SW,
+				$B8SW,
+				$B9SW,
 			),
 			'acc'		=> array(
 				
@@ -541,50 +425,9 @@ class IndexController extends Zend_Controller_Action
 
 		$wardrobeParams5 = array(
 			'fronts'	=> array(
-				array(
-					'x'	=> 0,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 270,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 64,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 127,
-					'y'	=> 0,
-					'w'	=> 61,
-					'h'	=> 153,
-					't'	=> null,
-				),
-				array(
-					'x'	=> 190,
-					'y'	=> 0,
-					'w'	=> 62,
-					'h'	=> 270,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 64,
-					'y'	=> 213,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
-				////////
-				array(
-					'x'	=> 64,
-					'y'	=> 242,
-					'w'	=> 124,
-					'h'	=> 27,
-					't'	=> null,
-				),
+				$A1LN, $B1MN, $C1MN, $D1LN,
+				$B8SW,
+				$B9SW,
 			),
 			'acc'		=> array(
 				
@@ -754,6 +597,23 @@ class IndexController extends Zend_Controller_Action
 //				'params'	=> $wardrobeParams,
 //			),			
 		);
+		
+		foreach($bodies as $k => &$body)
+		{
+			foreach($body['params']['fronts'] as $k2 => &$front)
+			{
+				$fx = $front['x'];
+				$fy = $front['y'];
+				$fw = $front['w'];
+				$fh = $front['h'];
+				$front['handles'][] = array(
+					'x'	=> $fw/2-31/2+$fx,
+					'y'	=> $fh/2-10/2+$fy,
+					'w'	=> 31,
+					'h'	=> 10,
+				);
+			}
+		}
 		
 		//Zend_Debug::dump($bodies);
 		return $bodies;
