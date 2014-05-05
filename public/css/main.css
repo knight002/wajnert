@@ -87,6 +87,65 @@ h2{
 	text-align: center;
 }
 
+/* expandable menu*/
+
+ul.expandable-menu{
+	list-style-type: none;
+	border: 1px solid #dadada;
+	padding: 0;
+	margin: 0;
+	z-index: 1;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+ul.expandable-menu li{
+	
+}
+
+ul.expandable-menu li a{
+	display: block;
+	font-family: "Verdana";
+/*	background-color: red;*/
+	background-color: #fefefe;
+	padding: 10px 0px 0px 15px;
+	padding: 0px 0px 0px 15px;
+	font-size: 12px;
+	color: #666666;
+	text-decoration: none;
+	width: 210px;
+	width: 195px;
+	height: 40px;
+	text-align: left;
+	line-height: 40px;
+	background-image: url('../images/small-arrow-down.gif');
+	background-repeat: no-repeat;
+	background-position: 180px center;
+}
+
+ul.expandable-menu li ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border-top: 1px solid #DADADA;
+}
+
+ul.expandable-menu li ul li{
+	
+}
+
+ul.expandable-menu li ul li a{
+	background-color: #fefefe;
+	border-bottom: 1px solid #dadada;
+	background-image: none;
+}
+
+ul.expandable-menu li ul li a.active, ul.expandable-menu li ul li a:hover{
+	background-color: #e68833;
+	color: #f0f0f0;
+}
+
 /**/
 
 ul.menu2{
@@ -478,7 +537,7 @@ ul.smallicons li{
 	
 }
 
-span.smallicon, span.smallicon{
+span.smallicon, a.smallicon{
 	display: inline-block;
 	width: 25px;
 	height: 25px;
