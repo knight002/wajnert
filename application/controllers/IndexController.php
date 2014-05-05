@@ -10,6 +10,9 @@ positions(id, x, y, w, h, type, handles_positions)
 
 textures(id, type, texture, allow_outside_placeholder, allow_on_placeholder, allow_inside_placeholder )
 
+
+outside_positions - dostepne pozycje frontow dla danej szafy(tablica z id zdefiniowanych pozycji)
+on_positions - dostepne pozycje dla klamek i elementow na frontach(tablica z id zdefiniowanych pozycji)
 items(id, outside_positions, on_positions, inside_positions, name, color, [scheme file], [outside file], [inside file])
 
 
@@ -144,13 +147,165 @@ class IndexController extends Zend_Controller_Action
 	
 	private function getAccessories()
 	{
+		
+		$accessories_ffffff = array(
+			array(
+				'id'	=> 1,
+				'name'	=> 'SZUF.50.2S.BL',
+				'file'	=> 'SZUF.50.2S.BL.gif',
+				'file2'	=> 'SZUF 50 2S.png',
+				'color'	=> 'ffffff',
+				'drag'	=> true,
+				'mountings'	=> array(
+					array(
+						'x'		=> 2,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 63,
+					),
+					array(
+						'x'		=> 64,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 63,
+					),
+					array(
+						'x'		=> 127,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 63,
+					),
+					array(
+						'x'		=> 190,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 63,
+					),
+				),
+				
+			),
+			array(
+				'id'	=> 2,
+				'name'	=> 'SZUF.50.3S.BL',
+				'file'	=> 'SZUF.50.3S.BL.gif',
+				'file2'	=> 'SZUF 50 3S.png',
+				'color'	=> 'ffffff',
+				'drag'	=> true,
+				'mountings'	=> array(
+					array(
+						'x'		=> 2,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+					array(
+						'x'		=> 64,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+					array(
+						'x'		=> 127,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+					array(
+						'x'		=> 190,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+				),
+				
+			),
+			array(
+				'id'	=> 3,
+				'name'	=> 'KSZ.50.3S',
+				'file'	=> 'KSZ.50.3S.gif',
+				'file2'	=> 'KSZ.50.3S.png',
+				'color'	=> 'ffffff',
+				'drag'	=> true,
+				'mountings'	=> array(
+					array(
+						'x'		=> 0,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+					array(
+						'x'		=> 64,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+					array(
+						'x'		=> 127,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+					array(
+						'x'		=> 190,
+						'y'		=> 155,
+						'w'		=> 62,
+						'h'		=> 111,
+					),
+				),
+				
+			),
+			array(
+				'id'	=> 4,
+				'name'	=> 'POL.5.BL',
+				'file'	=> 'POL.5.BL.gif',
+				'file2'	=> 'POL 5.png',
+				'color'	=> 'ffffff',
+				'drag'	=> true,
+				'mountings'	=> array(
+					array(
+						'x'		=> 4,
+						'y'		=> 32,
+						'w'		=> 58,
+						'h'		=> 234,
+					),
+					array(
+						'x'		=> 64,
+						'y'		=> 32,
+						'w'		=> 58,
+						'h'		=> 234,
+					),
+					array(
+						'x'		=> 127,
+						'y'		=> 32,
+						'w'		=> 58,
+						'h'		=> 234,
+					),
+					array(
+						'x'		=> 190,
+						'y'		=> 32,
+						'w'		=> 58,
+						'h'		=> 234,
+					),
+				),
+				
+			),
+		);
+		
+		//czarne
+		$accessories_000000 = $accessories_ffffff;
+		foreach($accessories_000000 as $k => &$v)
+		{
+			$v['name'] = str_ireplace('.BL', '.CZ', $v['name']);
+			$v['file'] = str_ireplace('.BL', '.CZ', $v['file']);
+		}
+		
 		$path = APPLICATION_PATH . '/../public/images/accessories/000000/';
 		$arr1 = $this->getFilesInDir($path);
 		$path = APPLICATION_PATH . '/../public/images/accessories/ffffff/';
 		$arr2 = $this->getFilesInDir($path);
 		return array(
-			'000000'	=> $arr1,
-			'ffffff'	=> $arr2,
+			'000000'	=> $accessories_000000,
+			'ffffff'	=> $accessories_ffffff,
 		);
 	}
 	
@@ -689,12 +844,40 @@ class IndexController extends Zend_Controller_Action
 				$fy = $front['y'];
 				$fw = $front['w'];
 				$fh = $front['h'];
-				$front['handles'][] = array(
-					'x'	=> $fw/2-31/2+$fx,
-					'y'	=> $fh/2-10/2+$fy,
-					'w'	=> 31,
-					'h'	=> 10,
-				);
+				
+				if($fh > 150 && $fh < 160)	//medium
+				{
+					$front['handles'][] = array(
+						'x'	=> $fw/2-31/2+$fx,
+						'y'	=> $fh*0.8-10/2+$fy,
+						'w'	=> 31,
+						'h'	=> 10,
+					);
+				}
+				elseif($fh > 20 && $fh < 30 && $fw > 120 && $fw < 130)	//small wide //124 / 27
+				{
+					$front['handles'][] = array(
+						'x'	=> $fw/2-31/2+$fx - 31,
+						'y'	=> $fh/2-10/2+$fy,
+						'w'	=> 31,
+						'h'	=> 10,
+					);
+					$front['handles'][] = array(
+						'x'	=> $fw/2-31/2+$fx + 31,
+						'y'	=> $fh/2-10/2+$fy,
+						'w'	=> 31,
+						'h'	=> 10,
+					);
+				}
+				else
+				{
+					$front['handles'][] = array(
+						'x'	=> $fw/2-31/2+$fx,
+						'y'	=> $fh/2-10/2+$fy,
+						'w'	=> 31,
+						'h'	=> 10,
+					);
+				}
 			}
 		}
 		

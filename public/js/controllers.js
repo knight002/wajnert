@@ -318,9 +318,31 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 			$scope.accessories.push(val);
 		}); 
 		//console.log($scope.accessories);
+		
+		//placeholders
+		$scope.placeholders = [];
+		angular.forEach(db.accessories[selectedItem.color], function(val1, key1) {
+			angular.forEach(val1.mountings, function(val2, key2) {
+				var ret = {
+					'id' : val1.id,
+					'name' : val1.name,
+					'file' : val1.file
+				};
+				ret.styles = {
+					'left' : val2.x+'px',
+					'top' : val2.y+'px',
+					'width' : val2.w+'px',
+					'height' : val2.h+'px',
+//					'background-image' : "url('../images/shelves/front/"+selectedItem.shelve.file+"')"
+				};
+				//console.log(ret);
+				$scope.placeholders.push(ret);
+			}); 
+		}); 
+		//console.log($scope.placeholders);
 
 		$scope.list1 = [];
-		angular.forEach($scope.fronts, function(val, key) {
+		angular.forEach($scope.placeholders, function(val, key) {
 			$scope.list1.push({});
 		});
 		
@@ -348,6 +370,14 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 			//console.log('hey, you dumped me :-(' , $scope.draggedTitle);
 			//console.log($scope.list1);
 			//console.log($scope.accessories);
+
+			$scope.accessories = [];
+			angular.forEach(db.accessories[selectedItem.color], function(val, key) {
+				$scope.accessories.push(val);
+			}); 
+			
+//			ui.draggable.clone(true);
+			//$(this).append(ui.draggable.clone(true));
 		};
 		$scope.overCallback = function(event, ui) {
 			//console.log('Look, I`m over you');
