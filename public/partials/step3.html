@@ -1,27 +1,35 @@
-<h2>Wybierz układ frontów.</h2>
+<div ng-include="headerTemplate"></div>
+		<div class="section-outer ">
+			<div class="section-inner section-middle centerize">
 
-<div class="step-nav clearfix">
-	<a href="#{{prevStep}}">
-		<img class="nav left" alt="" src="../images/left-orange1.gif" >
-	</a>
-	<a href="#{{nextStep}}">
-		<img class="nav right" alt="" src="../images/right-orange1.gif" >
-	</a>
-	<div class="selected-items">
-		<div class="fronts">
-			<img alt="" src="../images/step3/{{color}}/{{selectedFile2}}" >
-			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; {{front.background}}"></div>
+				<h2>Wybierz układ frontów.</h2>
 
+				<div class="step-nav clearfix">
+					<a href="#{{navigation.prevStep}}">
+						<img class="nav left" alt="" src="../images/left-orange1.gif" >
+					</a>
+					<a href="#{{navigation.nextStep}}">
+						<img class="nav right" alt="" src="../images/right-orange1.gif" >
+					</a>
+					<div class="selected-items">
+						<div class="fronts">
+							<img alt="" src="../images/step3/{{color}}/{{selectedFile2}}" >
+							<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; {{front.background}}"></div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="items-menu-div clearfix">
+				<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >-->
+					<flex-slider class="items-menu step3" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
+						<li style="margin: 6px;">
+							<img alt="" ng-click="selectItem(item)" ng-src="../images/step3/{{color}}/{{item.file2}}">
+						</li>
+					</flex-slider>
+				<!--	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
+				</div>
+
+			</div>
 		</div>
-	</div>
-</div>
-
-<div class="items-menu-div clearfix">
-<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >-->
-	<flex-slider class="items-menu step3" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
-		<li style="margin: 6px;">
-			<img alt="" ng-click="selectItem(item)" ng-src="../images/step3/{{color}}/{{item.file2}}">
-		</li>
-	</flex-slider>
-<!--	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
-</div>
+<div ng-include="footerTemplate" ng-init="navigation=navigation"></div>

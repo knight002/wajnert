@@ -1,34 +1,42 @@
-<h2>Wybierz kolory frontów.</h2>
+<div ng-include="headerTemplate"></div>
+		<div class="section-outer ">
+			<div class="section-inner section-middle centerize">
 
-<div class="step-nav clearfix">
-	<a href="#{{prevStep}}">
-		<img class="nav left" alt="" src="../images/left-orange1.gif" >
-	</a>
-	<a href="#{{nextStep}}">
-		<img class="nav right" alt="" src="../images/right-orange1.gif" >
-	</a>
-	<div class="selected-items">
-		<div class="fronts">
-			<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
-			<div ng-repeat="front in fronts" class="front selectable {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles">
-				&nbsp;
+				<h2>Wybierz kolory frontów.</h2>
+
+				<div class="step-nav clearfix">
+					<a href="#{{navigation.prevStep}}">
+						<img class="nav left" alt="" src="../images/left-orange1.gif" >
+					</a>
+					<a href="#{{navigation.nextStep}}">
+						<img class="nav right" alt="" src="../images/right-orange1.gif" >
+					</a>
+					<div class="selected-items">
+						<div class="fronts">
+							<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
+							<div ng-repeat="front in fronts" class="front selectable {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles">
+								&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="items-menu-div">
+				<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+					<ul class="items-menu">
+						<li ng-repeat="item in items"><span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span></li>
+					</ul>
+					<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
+					<flex-slider class="items-menu step4" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="62" >
+						<li>
+							<span class="texture-block">
+								<span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span>
+								<span class="texture-name">{{item.name}}</span>
+							</span>
+						</li>
+					</flex-slider>
+				</div>
+
 			</div>
 		</div>
-	</div>
-</div>
-
-<div class="items-menu-div">
-<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
-	<ul class="items-menu">
-		<li ng-repeat="item in items"><span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span></li>
-	</ul>
-	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
-	<flex-slider class="items-menu step4" slide="item in items track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="62" >
-		<li>
-			<span class="texture-block">
-				<span ng-click="selectItem(item)" class="texture-item " style="background-image: url('../images/textures/{{item.file}}')"></span>
-				<span class="texture-name">{{item.name}}</span>
-			</span>
-		</li>
-	</flex-slider>
-</div>
+<div ng-include="footerTemplate" ng-init="navigation=navigation"></div>

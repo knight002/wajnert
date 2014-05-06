@@ -29,15 +29,20 @@ wajnertControllers.controller('BodyController', ['$scope', '$route',
 wajnertControllers.controller('Step1Ctrl', ['$scope', '$http',
 	function($scope, $http)
 	{
-
+		$scope.navigation = {
+			'prevStep' : 'step1',
+			'nextStep' : 'step2'
+		}
 	}]);
 
 wajnertControllers.controller('Step2Ctrl', ['$scope', '$routeParams',
 	function($scope, $routeParams)
 	{
 		//console.log('step 2 controller');
-		$scope.prevStep = 'step1';
-		$scope.nextStep = 'step3';
+		$scope.navigation = {
+			'prevStep' : 'step1',
+			'nextStep' : 'step3'
+		}
 
 		var colors = Core.Func.getDistinctValues2(db.step2, 'color');
 		$scope.colors = [];
@@ -77,8 +82,10 @@ wajnertControllers.controller('Step3Ctrl', ['$scope', '$routeParams',
 		//console.log('step 3 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
-		$scope.prevStep = 'step2';
-		$scope.nextStep = 'step4';
+		$scope.navigation = {
+			'prevStep' : 'step2',
+			'nextStep' : 'step4'
+		}
 		$scope.color = selectedItem.color;
 		
 		//console.log(selectedItem);
@@ -114,11 +121,13 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 		if(!selectedItem.structure)
 			document.location = '#step2';
 
-		$scope.prevStep = 'step3';
+		$scope.navigation = {
+			'prevStep' : 'step3'
+		}
 		if(typeof selectedItem.item.params.shelves != 'undefined')
-			$scope.nextStep = 'step5';
+			$scope.navigation['nextStep'] = 'step5';
 		else
-			$scope.nextStep = 'step6';
+			$scope.navigation['nextStep'] = 'step6';
 		$scope.selectedItem = selectedItem;
 		$scope.fronts = selectedItem.item.params.fronts;
 		var items = db.textures;
@@ -169,8 +178,10 @@ wajnertControllers.controller('Step5Ctrl', ['$scope', '$routeParams',
 		//console.log('step 5 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
-		$scope.prevStep = 'step4';
-		$scope.nextStep = 'step6';
+		$scope.navigation = {
+			'prevStep' : 'step4',
+			'nextStep' : 'step6'
+		}
 
 		//console.log(db.shelves);
 		//$scope.items = db.shelves;
@@ -200,12 +211,15 @@ wajnertControllers.controller('Step6Ctrl', ['$scope', '$routeParams',
 		//console.log('step 6 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
-		
+		$scope.navigation = {
+			'nextStep' : 'step7'
+		}
 		if(typeof selectedItem.item.params.shelves != 'undefined')
-			$scope.prevStep = 'step5';
+			$scope.navigation['prevStep'] = 'step5';
 		else
-			$scope.prevStep = 'step4';
-		$scope.nextStep = 'step7';
+			$scope.navigation['prevStep'] = 'step4';
+		
+		
 		$scope.selectedItem = selectedItem;
 		
 		//FRONTS
@@ -306,9 +320,10 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 		//console.log('step 7 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
-		
-		$scope.prevStep = 'step6';
-		$scope.nextStep = 'step8';
+		$scope.navigation = {
+			'prevStep' : 'step6',
+			'nextStep' : 'step8'
+		}
 		
 		$scope.selectedItem = selectedItem;
 		$scope.fronts = selectedItem.item.params.fronts;
@@ -394,9 +409,10 @@ wajnertControllers.controller('Step8Ctrl', ['$scope', '$routeParams',
 		//console.log('step 8 controller');
 		if(!selectedItem.structure)
 			document.location = '#step2';
-		
-		$scope.prevStep = 'step7';
-		//$scope.nextStep = 'step9';
+		$scope.navigation = {
+			'prevStep' : 'step7'
+		//'nextStep' : 'step9';
+		}
 		
 		$scope.selectedItem = selectedItem;
 		$scope.fronts = selectedItem.item.params.fronts;

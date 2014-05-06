@@ -1,40 +1,48 @@
-<h2>Podsumowanie.</h2>
+<div ng-include="headerTemplate"></div>
+		<div class="section-outer ">
+			<div class="section-inner section-middle centerize">
 
-<div class="step-nav clearfix">
-	<a href="#{{prevStep}}">
-		<img class="nav left" alt="" src="../images/left-orange1.gif" >
-	</a>
-	<a href="#{{nextStep}}">
-<!--		<img class="nav right" alt="" src="../images/right-orange1.gif" >-->
-			<span class="nav right" style="width: 60px; height: 52px; display: block; cursor: none;">&nbsp;</span>
-	</a>
-	<div class="selected-items">
-		<div class="fronts exterior">
-			<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
-			<div ng-repeat="front in fronts" class="front no-borders {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles"></div>
-			<div ng-repeat="shelve in shelves" class="shelve no-borders {{shelve.selectedClass}}" ng-click="selectFront(shelve)" style="left: {{shelve.x}}px; top: {{shelve.y}}px; width: {{shelve.w}}px; height: {{shelve.h}}px; " ng-style="shelve.styles"></div>
-		</div>
-		
-		<div class="fronts interior">
-			<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
-<!--			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " >-->
-		</div>
-	</div>	
-</div>
+				<h2>Podsumowanie.</h2>
 
-<div class="items-menu-div clearfix">
-<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
-	<ul class="items-menu accessories">
-		<li ng-repeat="item in accessories" data-drop="true" ng-model="accessories" jqyoui-droppable="{index: {{$index}}}">
-			<img 
-				 data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="accessories" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.file"
-				alt="" src="../images/accessories/{{selectedItem.color}}/{{item.file}}" >
-		</li>
-	</ul>
-	<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
-	<flex-slider class="items-menu step6" slide="item in accessories track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
-		<li style="margin: 7px;">
-			<img id="acc{{item.id}}" alt="" src="../images/accessories/{{selectedItem.color}}/{{item.file2}}" >
-		</li>
-	</flex-slider>
-</div>
+				<div class="step-nav clearfix">
+					<a href="#{{navigation.prevStep}}">
+						<img class="nav left" alt="" src="../images/left-orange1.gif" >
+					</a>
+					<a href="#{{navigation.nextStep}}">
+				<!--		<img class="nav right" alt="" src="../images/right-orange1.gif" >-->
+							<span class="nav right" style="width: 60px; height: 52px; display: block; cursor: none;">&nbsp;</span>
+					</a>
+					<div class="selected-items">
+						<div class="fronts exterior">
+							<img alt="" src="../images/step3/{{selectedItem.color}}/{{selectedItem.item.file2}}" >
+							<div ng-repeat="front in fronts" class="front no-borders {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " ng-style="front.styles"></div>
+							<div ng-repeat="shelve in shelves" class="shelve no-borders {{shelve.selectedClass}}" ng-click="selectFront(shelve)" style="left: {{shelve.x}}px; top: {{shelve.y}}px; width: {{shelve.w}}px; height: {{shelve.h}}px; " ng-style="shelve.styles"></div>
+						</div>
+
+						<div class="fronts interior">
+							<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
+				<!--			<div ng-repeat="front in fronts" class="front {{front.selectedClass}}" ng-click="selectFront(front)" style="left: {{front.x}}px; top: {{front.y}}px; width: {{front.w}}px; height: {{front.h}}px; " >-->
+						</div>
+					</div>	
+				</div>
+
+				<div class="items-menu-div clearfix">
+				<!--	<img class="nav left" alt="" src="../images/left-arrows1.gif" >
+					<ul class="items-menu accessories">
+						<li ng-repeat="item in accessories" data-drop="true" ng-model="accessories" jqyoui-droppable="{index: {{$index}}}">
+							<img 
+								 data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="accessories" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.file"
+								alt="" src="../images/accessories/{{selectedItem.color}}/{{item.file}}" >
+						</li>
+					</ul>
+					<img class="nav right" alt="" src="../images/right-arrows1.gif">-->
+					<flex-slider class="items-menu step6" slide="item in accessories track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
+						<li style="margin: 7px;">
+							<img id="acc{{item.id}}" alt="" src="../images/accessories/{{selectedItem.color}}/{{item.file2}}" >
+						</li>
+					</flex-slider>
+				</div>
+
+			</div>
+		</div>
+<div ng-include="footerTemplate" ng-init="navigation=navigation"></div>

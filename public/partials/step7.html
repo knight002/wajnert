@@ -1,37 +1,45 @@
-<h2>Wybierz dodatki.</h2>
+<div ng-include="headerTemplate"></div>
+		<div class="section-outer ">
+			<div class="section-inner section-middle centerize">
 
-<div class="step-nav clearfix">
-	<a href="#{{prevStep}}">
-		<img class="nav left" alt="" src="../images/left-orange1.gif" >
-	</a>
-	<a href="#{{nextStep}}">
-		<img class="nav right" alt="" src="../images/right-orange1.gif" >
-	</a>
-	<div class="selected-items">
-		<div class="fronts no-image-border">
-			<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
-			<div 
-				ng-repeat="placeholder in placeholders" ng-style="placeholder.styles" 
-				class="acc-placeholder" 
-				data-drop="true" ng-model="list1" jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}"
-				data-jqyoui-options="{accept: '#acc{{placeholder.id}}', activeClass: 'ui-state-hover', hoverClass: 'ui-state-active'}"
-				>
-				<img 
-					ng-show="list1[$index].file" data-drag="{{list1[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}"
-					alt="" src="../images/accessories/{{selectedItem.color}}/frontview/{{list1[$index].file}}" 
-					>
+				<h2>Wybierz dodatki.</h2>
+
+				<div class="step-nav clearfix">
+					<a href="#{{navigation.prevStep}}">
+						<img class="nav left" alt="" src="../images/left-orange1.gif" >
+					</a>
+					<a href="#{{navigation.nextStep}}">
+						<img class="nav right" alt="" src="../images/right-orange1.gif" >
+					</a>
+					<div class="selected-items">
+						<div class="fronts no-image-border">
+							<img alt="" src="../images/interiors/{{selectedItem.color}}/{{selectedItem.item.interior}}" >
+							<div 
+								ng-repeat="placeholder in placeholders" ng-style="placeholder.styles" 
+								class="acc-placeholder" 
+								data-drop="true" ng-model="list1" jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}"
+								data-jqyoui-options="{accept: '#acc{{placeholder.id}}', activeClass: 'ui-state-hover', hoverClass: 'ui-state-active'}"
+								>
+								<img 
+									ng-show="list1[$index].file" data-drag="{{list1[$index].drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}"
+									alt="" src="../images/accessories/{{selectedItem.color}}/frontview/{{list1[$index].file}}" 
+									>
+							</div>
+						</div>
+					</div>	
+				</div>
+
+				<div class="items-menu-div clearfix">	
+					<flex-slider class="items-menu step6" slide="item in accessories track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
+						<li style="margin: 7px;" data-drop="true" ng-model="accessories" jqyoui-droppable="{index: {{$index}}}">
+							<img id="acc{{item.id}}"
+								data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="accessories" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" 
+
+								alt="" src="../images/accessories/{{selectedItem.color}}/{{item.file2}}" >
+						</li>
+					</flex-slider>
+				</div>
+
 			</div>
 		</div>
-	</div>	
-</div>
-
-<div class="items-menu-div clearfix">	
-	<flex-slider class="items-menu step6" slide="item in accessories track by item.id" animation="slide" animation-loop="false" item-margin="12" item-width="160" >
-		<li style="margin: 7px;" data-drop="true" ng-model="accessories" jqyoui-droppable="{index: {{$index}}}">
-			<img id="acc{{item.id}}"
-				data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid', helper: 'clone'}" ng-model="accessories" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" 
-
-				alt="" src="../images/accessories/{{selectedItem.color}}/{{item.file2}}" >
-		</li>
-	</flex-slider>
-</div>
+<div ng-include="footerTemplate" ng-init="navigation=navigation"></div>
