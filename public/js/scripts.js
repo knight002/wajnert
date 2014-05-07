@@ -10,6 +10,7 @@ Core.Scripts = {
 	init : function() {
 		$('body').on('mouseenter', '.js-expandable-menu .js-main', Core.Scripts.expand);
 		$('body').on('mouseleave', '.js-expandable-menu ul', Core.Scripts.collapse);
+		$( document ).tooltip();
 	},
 
 	expand : function(event) {
