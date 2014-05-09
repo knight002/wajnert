@@ -121,15 +121,55 @@ wajnertControllers.controller('Step4Ctrl', ['$scope', '$routeParams',
 		if(!selectedItem.structure)
 			document.location = '#step2';
 
+		$scope.selectedItem = selectedItem;
+		var fronts = selectedItem.item.params.fronts;
+		
+		//get distict front types for that wardrobe
+		var distinct1 = Core.Func.getDistinctValues2(fronts, 'type');
+		//console.log(distinct1);
+		
+		//set default or choosen front type
+		var frontType = $routeParams.frontType;
+		if(typeof $routeParams.frontType == 'undefined')
+			frontType = Core.Func.getFirst(distinct1);
+		//console.log(frontType);
+		
+		//filter fronts for choosen front type
+		//--["nm", "ns", "ws"]
+		var filterArr = [
+			{'key' : 'type', 'value' : frontType}
+		];
+		var filteredFronts = [];
+		filteredFronts = Core.Func.filterElementsByKey(fronts, filterArr);
+		$scope.fronts = [];
+		angular.forEach(filteredFronts, function(val, key) {
+			$scope.fronts.push(val);
+		});
+		
+		//get next from types array
+		var nextFrontType = Core.Func.getNextValue(distinct1, frontType);
+		//console.log(nextFrontType);
+		
+		
 		$scope.navigation = {
 			'prevStep' : 'step3'
 		}
-		if(typeof selectedItem.item.params.shelves != 'undefined')
-			$scope.navigation['nextStep'] = 'step5';
+		
+		if(nextFrontType === false)
+		{
+			if(typeof selectedItem.item.params.shelves != 'undefined')
+				$scope.navigation['nextStep'] = 'step5';
+			else
+				$scope.navigation['nextStep'] = 'step6';
+		}
 		else
-			$scope.navigation['nextStep'] = 'step6';
-		$scope.selectedItem = selectedItem;
-		$scope.fronts = selectedItem.item.params.fronts;
+		{
+			$scope.navigation['nextStep'] = 'step4/'+nextFrontType;
+		}
+		
+		
+		
+		
 		var items = db.textures;
 		$scope.items = [];
 		angular.forEach(items, function(val, key) {

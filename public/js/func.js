@@ -63,5 +63,33 @@ Core.Func = {
 //		arr.forEach(function(value, key){
 //			return {key : value};
 //		});
+	},
+	
+	getNextValue : function(arr, value)
+	{
+		//console.log(arr);
+		var searchedValue = value;
+		
+		var markNext = 0;
+		var ret = false;
+		arr.forEach(function(value, key){
+		//for(value in arr){
+			
+			//return next value
+			if(markNext === 1)
+				ret = value;
+			
+			//console.log('searchedValue: ' +searchedValue);
+			//console.log('value: ' + value);
+			if(searchedValue === value)
+				markNext = 1;
+			else
+				markNext = 0;
+			
+			//console.log('markNext: ' + markNext);
+		});
+		
+		//console.log(ret);
+		return ret;
 	}
 };
