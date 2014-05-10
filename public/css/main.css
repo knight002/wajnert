@@ -271,6 +271,7 @@ div.front.no-borders, div.shelve.no-borders, div.handle.no-borders{
 
 div.front.selectable, div.handle.selectable{
 	cursor: pointer;
+	border: 1px solid lightgreen;
 }
 
 div.front.selectable:hover, div.handle.selectable:hover{
@@ -291,11 +292,13 @@ div.front.selected, div.handle.selected{
 .acc-placeholder.ui-state-hover{
 	background-color: greenyellow;
 	opacity: 0.3;
+	background-image: none;
 }
 
 .acc-placeholder.ui-state-active{
 	background-color: red;
 	opacity: 0.3;
+	background-image: none;
 }
 
 div.color-selector{
@@ -584,3 +587,53 @@ ul.smallicons.right .smallicon img{
 	margin-top: 9px;
 }
 
+/*tooltip*/
+
+.ui-tooltip {
+	position: absolute;
+	z-index: 9999;
+	max-width: 300px;
+	-webkit-box-shadow: 0 0 5px #dad8d8;
+	box-shadow: 0 0 5px #dad8d8;
+	
+	color: #4c4c4d;
+	font-size: 12px;
+	padding: 7px 14px;
+	
+	border: 1px solid #dad8d8;
+	
+	opacity: .7;
+	filter:Alpha(Opacity=70);
+}
+
+body .ui-tooltip {
+	border-width: 2px;
+}
+
+.ui-tooltip:after 
+{
+	content: "";
+	position: absolute;
+	bottom: -8px;
+	left: 7px;
+	border-style: solid;
+	border-width: 8px 12px 0;
+	border-color: #FFFFFF transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+}
+
+.ui-tooltip:before 
+{
+	content: "";
+	position: absolute;
+	top: 31px;
+	left: 7px;
+	border-style: solid;
+	border-width: 8px 12px 0;
+	border-color: #DAD8D8 transparent;
+	display: block;
+	width: 0;
+	z-index: 0;
+}
