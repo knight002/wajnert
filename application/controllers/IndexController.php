@@ -65,6 +65,11 @@ class IndexController extends Zend_Controller_Action
 	const WARDROBE = 2;
 	const BED = 3;
 	
+	const TYPE_NARROW_LONG = 'nl';
+	const TYPE_NARROW_MEDIUM = 'nm';
+	const TYPE_NARROW_SHORT = 'ns';
+	const TYPE_WIDE_SHORT = 'ws';
+	
 	public function init()
 	{
 		/* Initialize action controller here */
@@ -795,7 +800,7 @@ class IndexController extends Zend_Controller_Action
 			),
 			
 //			array(	//SOME OTHER ELEMENT
-//				'id'		=> 33,
+//				'id'		=> 32,
 //				'file'		=> 'SZF konf 2.gif',
 //				'file2'		=> 'you1.jpg',
 //				'color'		=> '000000',
@@ -803,7 +808,7 @@ class IndexController extends Zend_Controller_Action
 //				'params'	=> $wardrobeParams,
 //			),
 //			array(
-//				'id'		=> 3,
+//				'id'		=> 33,
 //				'file'		=> 'SZF konf 3.gif',
 //				'file2'		=> 'F3.gif',
 //				'color'		=> '000000',
@@ -811,7 +816,7 @@ class IndexController extends Zend_Controller_Action
 //				'params'	=> $wardrobeParams,
 //			),
 //			array(
-//				'id'		=> 4,
+//				'id'		=> 34,
 //				'file'		=> 'SZF konf 4.gif',
 //				'file2'		=> 'F4.gif',
 //				'color'		=> '000000',
@@ -819,7 +824,7 @@ class IndexController extends Zend_Controller_Action
 //				'params'	=> $wardrobeParams,
 //			),
 //			array(
-//				'id'		=> 5,
+//				'id'		=> 35,
 //				'file'		=> 'SZF konf 5.gif',
 //				'file2'		=> 'F5.gif',
 //				'color'		=> '000000',
@@ -827,7 +832,7 @@ class IndexController extends Zend_Controller_Action
 //				'params'	=> $wardrobeParams,
 //			),
 //			array(
-//				'id'		=> 6,
+//				'id'		=> 66,
 //				'file'		=> 'SZF konf 6.gif',
 //				'file2'		=> 'F6.gif',
 //				'color'		=> '000000',
@@ -838,6 +843,7 @@ class IndexController extends Zend_Controller_Action
 		
 		foreach($bodies as $k => &$body)
 		{
+			//adjust handles
 			foreach($body['params']['fronts'] as $k2 => &$front)
 			{
 				$fx = $front['x'];
@@ -845,8 +851,26 @@ class IndexController extends Zend_Controller_Action
 				$fw = $front['w'];
 				$fh = $front['h'];
 				
-				if($fh > 150 && $fh < 160)	//medium
+				if($fh > 260 && $fh < 280 && $fw > 50 && $fw < 70)
 				{
+					$front['type'] = self::TYPE_NARROW_LONG;
+					$front['handles'][] = array(
+						'x'	=> $fw/2-31/2+$fx,
+						'y'	=> $fh/2-10/2+$fy,
+						'w'	=> 31,
+						'h'	=> 10,
+					);
+					
+					$front['handles'][] = array(
+						'x'	=> $fw - 11.54-10/2+$fx,
+						'y'	=> $fh/2+$fy,
+						'w'	=> 10,
+						'h'	=> 98,
+					);
+				}
+				elseif($fh > 150 && $fh < 160 && $fw > 50 && $fw < 70)
+				{
+					$front['type'] = self::TYPE_NARROW_MEDIUM;
 					$front['handles'][] = array(
 						'x'	=> $fw/2-31/2+$fx,
 						'y'	=> $fh*0.8-10/2+$fy,
@@ -854,8 +878,19 @@ class IndexController extends Zend_Controller_Action
 						'h'	=> 10,
 					);
 				}
+				elseif($fh > 20 && $fh < 30 && $fw > 50 && $fw < 70)
+				{
+					$front['type'] = self::TYPE_NARROW_SHORT;
+					$front['handles'][] = array(
+						'x'	=> $fw/2-31/2+$fx,
+						'y'	=> $fh/2-10/2+$fy,
+						'w'	=> 31,
+						'h'	=> 10,
+					);
+				}
 				elseif($fh > 20 && $fh < 30 && $fw > 120 && $fw < 130)	//small wide //124 / 27
 				{
+					$front['type'] = self::TYPE_WIDE_SHORT;
 					$front['handles'][] = array(
 						'x'	=> $fw/2-31/2+$fx - 31,
 						'y'	=> $fh/2-10/2+$fy,
@@ -869,14 +904,31 @@ class IndexController extends Zend_Controller_Action
 						'h'	=> 10,
 					);
 				}
-				else
+			}
+			
+			//adjust front types
+			foreach($body['params']['fronts'] as $k2 => &$front)
+			{
+				$fx = $front['x'];
+				$fy = $front['y'];
+				$fw = $front['w'];
+				$fh = $front['h'];
+				
+				if($fh > 260 && $fh < 280 && $fw > 50 && $fw < 70)
 				{
-					$front['handles'][] = array(
-						'x'	=> $fw/2-31/2+$fx,
-						'y'	=> $fh/2-10/2+$fy,
-						'w'	=> 31,
-						'h'	=> 10,
-					);
+					$front['type'] = self::TYPE_NARROW_LONG;
+				}
+				elseif($fh > 150 && $fh < 160 && $fw > 50 && $fw < 70)
+				{
+					$front['type'] = self::TYPE_NARROW_MEDIUM;
+				}
+				elseif($fh > 20 && $fh < 30 && $fw > 50 && $fw < 70)
+				{
+					$front['type'] = self::TYPE_NARROW_SHORT;
+				}
+				elseif($fh > 20 && $fh < 30 && $fw > 120 && $fw < 130)	//small wide //124 / 27
+				{
+					$front['type'] = self::TYPE_WIDE_SHORT;
 				}
 			}
 		}
