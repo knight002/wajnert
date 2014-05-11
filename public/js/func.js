@@ -91,5 +91,32 @@ Core.Func = {
 		
 		//console.log(ret);
 		return ret;
+	},
+	
+	rectCollision : function(a, b)
+	{
+		a.left = a.x;
+		a.right = a.x+a.w;
+		a.top = a.y;
+		a.bottom = a.y+a.h;
+		
+		b.left = b.x;
+		b.right = b.x+b.w;
+		b.top = b.y;
+		b.bottom = b.y+b.h;
+		
+		r1 = a;
+		r2 = b;
+		
+		
+//		console.log(a);
+//		console.log(b);
+		
+//		return ! ( b.left > a.right || b.right < a.left || b.top < a.bottom || b.bottom > a.top);
+		
+		return !(r2.left > r1.right
+			|| r2.right < r1.left
+			|| r2.top > r1.bottom
+			|| r2.bottom < r1.top);
 	}
 };

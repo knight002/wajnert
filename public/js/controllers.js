@@ -390,9 +390,10 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 					'height' : val2.h+'px',
 //					'background-image' : "url('../images/shelves/front/"+selectedItem.shelve.file+"')"
 				};
+				ret.data = val2;
 				//console.log(ret);
 				$scope.placeholders.push(ret);
-			}); 
+			});
 		}); 
 		//console.log($scope.placeholders);
 
@@ -414,6 +415,10 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 		$scope.startCallback = function(event, ui, file) {
 			//console.log('You started draggin: ' + file.file);
 			$scope.draggedTitle = file.file;
+			
+			//assign a timestap as a unique id and reference in time
+			//console.log(this);
+			file.timeStamp = event.timeStamp;
 		};
 		$scope.stopCallback = function(event, ui) {
 			//console.log('Why did you stop draggin me?');
@@ -422,9 +427,29 @@ wajnertControllers.controller('Step7Ctrl', ['$scope', '$routeParams',
 			//console.log('hey, look I`m flying');
 		};
 		$scope.dropCallback = function(event, ui) {
-			//console.log('hey, you dumped me :-(' , $scope.draggedTitle);
-			//console.log($scope.list1);
-			//console.log($scope.accessories);
+			//this.placeholder.timeStamp = event.timeStamp;
+			var that = this;
+
+			//search for colisions
+			//compare colided items timestamp
+			//leave element with a latest timestamp
+			angular.forEach($scope.list1, function(val, key) {
+				if(typeof val.timeStamp !== 'undefined')
+				{
+					var a = that.placeholder.data;
+					var b = $scope.placeholders[key].data;
+					if(a !== b)
+					{
+						var collides = Core.Func.rectCollision(a, b);
+						//console.log(key + ' : ' + collides);
+						if(collides === true)
+						{
+							//console.log(that);
+							$scope.list1[key] = {};
+						}
+					}
+				}
+			});
 
 			$scope.accessories = [];
 			angular.forEach(db.accessories[selectedItem.color], function(val, key) {
